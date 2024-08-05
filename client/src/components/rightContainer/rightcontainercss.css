@@ -1,0 +1,33 @@
+#rightContainer{
+    /* border: 1px solid white; */
+    width: 30%;
+    height: 100vh;
+    padding: 20px;
+    /* border-radius: 0px 10px 10px 0px; */
+    /* background-color: #4d5aaed8; */
+    /* background-color: #061935; */
+    /* overflow-Y: scroll; */
+    border-left: solid 1.5px rgba(255, 255, 255, 0.78);
+
+    /* background: linear-gradient(150deg, #061935, #4d5aae); */
+    background: linear-gradient(150deg, #061935, #4d5aae96);
+    animation: gradientAnimation 10s ease infinite; /* Adjust duration as needed */
+    background-size: 200% 200%; 
+    cursor: grab;
+
+    display: none !important;
+}
+
+
+@keyframes gradientAnimation {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+  

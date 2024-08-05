@@ -1,0 +1,112 @@
+#newReleases-container-main{
+    display: flex;
+    flex-direction: column;
+    /* padding: 20px; */
+}
+
+.newReleases-contents{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+    padding: 30px;
+}
+
+.newReleases-contents h1{
+    font-size: 50px;
+}
+
+.newReleases-contents p{
+    font-weight: bold;
+}
+
+.container-TOHold-releases-props{
+    background-color: rgba(77, 90, 174, 0.2); 
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
+
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+    overflow-x: scroll;
+}
+
+.container-TOHold-releases-props::-webkit-scrollbar {
+    /* background-color: #061935e1; */
+    background-color: rgba(79, 76, 76, 0.278);
+    height: 13px;
+  }
+  
+
+  /* .container-TOHold-releases-props::-webkit-scrollbar-track {} */
+  
+
+  .container-TOHold-releases-props::-webkit-scrollbar-thumb {
+    background: #4d5aae; 
+  }
+  
+ 
+  .container-TOHold-releases-props::-webkit-scrollbar-thumb:hover {
+    background: #5969d1; 
+    cursor :grabbing;
+  }
+  
+
+
+  /* Media Query Section */
+
+  @media screen and (max-width: 300px) {
+    .newReleases-contents{
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .newReleases-contents h1{
+        font-size: 40px;
+    }
+
+    .newReleases-contents p{
+        font-size: 14px;
+    }
+
+    #newmusicreleases{
+        padding: 20px 10px !important;
+    }
+  }
+
+
+  /* Media Query at 301 to 400px */
+  @media screen and (min-width: 301px) and (max-width: 400px) {
+    .newReleases-contents{
+        padding: 15px;
+        gap: 5px;
+    }
+
+    .newReleases-contents h1{
+        font-size: 43px;
+    }
+
+    .newReleases-contents p{
+        font-size: 14.5px;
+    }
+
+    #newmusicreleases{
+        padding: 20px 15px !important;
+    }
+  }
+
+   /* Media Query at 401 to 500px */
+   @media screen and (min-width: 401px) and (max-width: 500px) {
+    .newReleases-contents{
+        padding: 15px;
+        gap: 5px;
+    }
+
+    /* .newReleases-contents h1{
+        font-size: 43px;
+    }
+
+    .newReleases-contents p{
+        font-size: 14.5px;
+    } */
+  }

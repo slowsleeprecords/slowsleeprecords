@@ -1,0 +1,138 @@
+/* Left Container Parent will be called in the header css */
+
+header{
+    /* background-color: #061935; */
+    background-color: #4d5aae;
+    padding: 12px 20px;
+
+    /* margin: 20px;
+    border-radius:50px; */
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    position: sticky; 
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header ul{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+header ul li{
+    list-style: none;
+    transition: all 0.4s ease;
+    padding: 5px;
+}
+
+header ul li:hover{
+    background-color: #06193534;
+    padding: 5px;
+    border-radius: 10px;
+    /* color: #061935c8; */
+}
+
+
+header ul li a{ 
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+header button{
+    padding: 10px 20px;
+    background-color: #06193570;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+header button:hover{
+    background-color: #061935b5;
+}
+
+.header-for-small-devices{
+    display: none;
+}
+
+
+/* Media Query Below */
+
+/* Media Query For screen 300px and under */
+@media screen and (max-width: 800px) {
+    header {
+        display: none;
+    }
+
+    .header-for-small-devices{
+        display: block;
+
+        position: sticky;
+        z-index: 999;
+        top: 0;
+    }
+
+    .logo-mobile-head{
+        background-color: #4d5aae;
+        width: 100%;
+    }
+
+    .logo-mobile-head img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .header-for-small-devices ul{
+        background-color: #0f274d;
+        height: 100vh;
+        width: 100%;
+
+        position: absolute;
+        z-index: 999;
+
+        padding: 20px 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+
+         /* Starting position for the slide-out */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .header-for-small-devices ul.slide-in {
+        transform: translateX(0);
+    }
+    
+    .header-for-small-devices ul.slide-out {
+        transform: translateX(-100%);
+    }
+
+    .header-for-small-devices li{
+        text-decoration: none;
+        list-style: none;
+        font-weight: bold;
+        font-size: 16.3px;
+    }
+
+    .header-for-small-devices button{
+        padding: 7px 14px;
+        border-radius: 3px;
+        border: none;
+        font-weight: bold;
+        background-color: #061935e4;
+        color: white;
+        border: solid 1px white;
+    }
+}

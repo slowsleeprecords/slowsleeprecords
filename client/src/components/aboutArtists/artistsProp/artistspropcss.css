@@ -1,0 +1,238 @@
+.artists-prop-container{
+    padding: 30px;
+    width: 100%;
+}
+
+.artist-data-biography{
+    width: 960px;
+    height: 400px;
+    border: solid white 1px;
+    border-radius: 10px;
+    background-color: rgb(77, 90, 174, 0.2);
+
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    gap: 30px;
+
+    position: relative;
+    overflow: hidden;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.artist-data-biography img{
+    border: solid white 1px;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.actual-artist-bio-data{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.actual-artist-bio-data p{
+    font-size: 18px;
+}
+
+.instagram-artist-bio img, .spotify-artist-bio img{
+    width: 25px;
+    height: 25px;
+    border: none;
+}
+
+.instagram-artist-bio p, .spotify-artist-bio p{
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.visit-artist-bio a {
+    text-decoration: none;
+  }
+
+.instagram-artist-bio, .spotify-artist-bio{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+
+    background-color: #06193579;
+    padding: 10px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+    transition: all 0.3s ease;
+}
+
+.instagram-artist-bio:hover, .spotify-artist-bio:hover{
+    box-shadow: 0px 0px 10px 3px #4d5aae;
+}
+
+.visit-artist-bio{
+    display: flex;
+    align-items: center;
+    gap:15px;
+}
+
+
+ /* Media Query Section */
+
+  /* Media for screens 300px max */
+  @media screen and (max-width: 300px) {
+    .artist-data-biography{
+        display: flex;
+        flex-direction: column;
+        width: 267px;
+        height: fit-content;
+        padding: 10px 10px;
+    }
+
+    .artist-data-biography img{
+        /* display: none; */
+        width: 100%;
+    }
+
+    .artists-prop-container{
+        padding: 30px 10px;
+    }
+
+    .visit-artist-bio img{
+        width: unset;
+    }
+  }
+
+
+   /* Media for screens 301px to 400px max */
+   @media screen and (min-width: 301px) and (max-width: 400px) {
+    .artist-data-biography{
+        display: flex;
+        flex-direction: column;
+        width: 280px;
+        height: fit-content;
+        padding: 10px 10px;
+    }
+
+    .artist-data-biography img{
+        /* display: none; */
+        width: 100%;
+    }
+
+    .artists-prop-container{
+        padding: 30px 15px;
+    }
+
+    .visit-artist-bio img{
+        width: unset;
+    }
+  }
+
+  /* Media for screens 401px to 500px max */
+  @media screen and (min-width: 401px) and (max-width: 500px) {
+    .artist-data-biography{
+        display: flex;
+        flex-direction: column;
+        width: 375px;
+        height: fit-content;
+        padding: 10px 10px;
+    }
+
+    .artist-data-biography img{
+        /* display: none; */
+
+        width: 100%;
+    }
+
+    .artists-prop-container{
+        padding: 30px 15px;
+    }
+
+    .visit-artist-bio img{
+        width: unset;
+    }
+  }
+
+
+  /* Media for screens 501px to 600px max */
+  @media screen and (min-width: 501px) and (max-width: 600px) {
+    .artist-data-biography{
+        display: flex;
+        flex-direction: column;
+        width: 450px;
+        height: fit-content;
+        padding: 20px 20px;
+
+        align-items: center;
+    }
+
+    .artist-data-biography img{
+        /* display: none; */
+        width: 100%;
+    }
+
+    .artists-prop-container{
+        padding: 30px 15px;
+    }
+
+    .visit-artist-bio img{
+        width: unset;
+    }
+  }
+
+
+   /* Media for screens 601px to 900px max */
+   @media screen and (min-width: 601px) and (max-width: 900px) {
+    .artist-data-biography{
+        display: flex;
+        flex-direction: column;
+        width: 550px;
+        height: fit-content;
+        padding: 20px 20px;
+
+        align-items: center;
+    }
+
+    .artist-data-biography img{
+        /* display: none; */
+        width: 100%;
+    }
+
+    .artists-prop-container{
+        padding: 30px 15px;
+    }
+
+    .visit-artist-bio img{
+        width: unset;
+    }
+  }
+
+
+   /* Media for screens 901px to 1200px max */
+   @media screen and (min-width: 901px) and (max-width: 1200px) {
+    .artist-data-biography{
+        display: flex;
+        flex-direction: column;
+        width: 550px;
+        height: fit-content;
+        padding: 20px 20px;
+
+        align-items: center;
+    }
+
+    .artist-data-biography img{
+        /* display: none; */
+        width: 100%;
+    }
+
+    .artists-prop-container{
+        padding: 30px 15px;
+    }
+
+    .visit-artist-bio img{
+        width: unset;
+    }
+  }
