@@ -17,42 +17,7 @@ function NewReleases() {
             </div>
 
             <div className="container-TOHold-releases-props">
-
-            <Releases
-                Release_Image = "https://wallpapercave.com/wp/wp9386660.jpg"
-                Release_Title = "Wonders to Share"
-                Artist_Name = "Cultertraz"
-                Release_Link = ""
-            />
-
-            <Releases
-                Release_Image = "https://wallpapercave.com/wp/wp9386660.jpg"
-                Release_Title = "Wonders to Share"
-                Artist_Name = "Cultertraz"
-                Release_Link = ""
-            />
-
-            <Releases
-                Release_Image = "https://wallpapercave.com/wp/wp9386660.jpg"
-                Release_Title = "Wonders to Share"
-                Artist_Name = "Cultertraz"
-                Release_Link = ""
-            />
-
-            <Releases
-                Release_Image = "https://wallpapercave.com/wp/wp9386660.jpg"
-                Release_Title = "Wonders to Share"
-                Artist_Name = "Cultertraz"
-                Release_Link = ""
-            />
-
-            <Releases
-                Release_Image = "https://wallpapercave.com/wp/wp9386660.jpg"
-                Release_Title = "Wonders to Share"
-                Artist_Name = "Cultertraz"
-                Release_Link = ""
-            />
-            
+                <Releases/>
             </div>
         </div>
         </>

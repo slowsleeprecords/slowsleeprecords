@@ -1,7 +1,12 @@
 #newmusicreleases {
-    width: 100%;
+    /* width: 100%; */
+    width: fit-content;
     height: fit-content;
     padding: 20px 27px;
+
+    display: flex !important;
+    gap: 50px;
+
 }
 
 
@@ -49,11 +54,32 @@
 }
 
 
+/* All buttons to edit discography && biography */
+.edit-button-dashboard-releases{
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.edit-button-dashboard-releases:hover{
+    background-color: #4d5aae71;
+    color: white;
+}
+/*  */
+
+
 
 /* Media Guery Section */
 
 /* Media for screens with 300px max */
 @media screen and (max-width:300px) {
+
+    #newmusicreleases{
+
+    }
+
     .musicRelease-prop{
         width: 259px;
     }

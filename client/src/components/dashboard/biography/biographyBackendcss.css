@@ -1,0 +1,80 @@
+#biographyBackend-container{
+    background: linear-gradient(150deg, #061935, #4d5aae);
+    min-height: 100vh;
+
+    position: relative;
+
+}
+
+#biographyBackend-second-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    gap: 50px;
+    min-height: 90vh;
+
+    position: relative;
+    left: 20%;
+}
+
+.biographyBackend-heading{
+    width: 100%;
+}
+
+.biographyBackend-inputs{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.biographyBackend-form input,
+.biographyBackend-form textarea{
+    padding: 10px;
+    border-radius: 7px;
+    
+    width: 400px;
+    height: 60px;
+
+    font-size: 90%;
+    border: solid 2px #c1d2ed;
+    transition: all 0.2s ease;
+}
+
+.biographyBackend-form input:focus,
+.biographyBackend-form textarea:focus{
+    border: solid 4.5px #4d5aae;
+
+    outline: none;
+}
+
+.biographyBackend-form textarea{
+    height: fit-content !important;
+    resize: none;
+    /* overflow: hidden; */
+}
+
+.biographyBackend-form button{
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 40px;
+
+    cursor: pointer;
+    border-radius: 7px;
+    border: solid 2px #c1d2ed;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s ease;
+    background-color: #4d5aae;
+}
+
+.biographyBackend-form button:hover{
+    background: linear-gradient(10deg, #061935, #4d5aae);
+}
+
+.biographyBackendSection-buttons{
+    padding: 30px 0px;
+    display: flex;
+    gap: 18px;
+}

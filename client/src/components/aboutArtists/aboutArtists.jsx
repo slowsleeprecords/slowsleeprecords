@@ -9,6 +9,7 @@ import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
 import leftSide from "./assets/left-svgrepo-com.svg"
 import rightSide from "./assets/arrow-right-circle-svgrepo-com.svg"
+import AboutArtistData from "./artistsProp/artistsProp"
 
 function AboutArtists() {
     const containerRef = useRef(null);
@@ -51,27 +52,7 @@ function AboutArtists() {
                     />
                 </div>
                 <div className="container-to-hold-biography-data" ref={containerRef}>
-                    <ArtistsProp 
-                        artistProfileImage="https://th.bing.com/th/id/R.f7cb20a741c5107dbf1b9bc747c6a7aa?rik=JmEfoz4Tvn7eRg&pid=ImgRaw&r=0"
-                        artistName="Lofi Girl"
-                        artistBio="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a scelerisque felis. Ut et sollicitudin massa. Nunc fringilla pretium mi a molestie. Maecenas sagittis lorem nec augue luctus aliquet. Etiam viverra urna eros, et ullamcorper felis varius sit amet. Vestibulum sit amet nunc non ante efficitur ullamcorper."
-                        instaProfileURL="null"
-                        spotifyProfileURL="null"
-                    /> 
-                    <ArtistsProp 
-                        artistProfileImage="https://th.bing.com/th/id/R.f7cb20a741c5107dbf1b9bc747c6a7aa?rik=JmEfoz4Tvn7eRg&pid=ImgRaw&r=0"
-                        artistName="Lofi Girl"
-                        artistBio="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a scelerisque felis. Ut et sollicitudin massa. Nunc fringilla pretium mi a molestie. Maecenas sagittis lorem nec augue luctus aliquet. Etiam viverra urna eros, et ullamcorper felis varius sit amet. Vestibulum sit amet nunc non ante efficitur ullamcorper."
-                        instaProfileURL="null"
-                        spotifyProfileURL="null"
-                    /> 
-                    <ArtistsProp 
-                        artistProfileImage="https://th.bing.com/th/id/R.f7cb20a741c5107dbf1b9bc747c6a7aa?rik=JmEfoz4Tvn7eRg&pid=ImgRaw&r=0"
-                        artistName="Lofi Girl"
-                        artistBio="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a scelerisque felis. Ut et sollicitudin massa. Nunc fringilla pretium mi a molestie. Maecenas sagittis lorem nec augue luctus aliquet. Etiam viverra urna eros, et ullamcorper felis varius sit amet. Vestibulum sit amet nunc non ante efficitur ullamcorper."
-                        instaProfileURL="null"
-                        spotifyProfileURL="null"
-                    /> 
+                    <AboutArtistData/>
                 </div>
             </div>
         </>

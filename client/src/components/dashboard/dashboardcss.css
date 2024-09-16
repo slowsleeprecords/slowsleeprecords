@@ -1,0 +1,146 @@
+#main-dashboard-cont{
+    /* background: linear-gradient(20deg, #061935, #4d5aae); */
+    background-color: #061935;
+    min-height: 100vh;
+
+    position: relative !important;
+
+    display: flex;
+    flex-direction: row;
+}
+
+#main-dashboard-cont hr{
+    margin-top: 10px;
+    border: solid 1.1px white;
+}
+
+.the-dashboard-second-main{
+    display: flex;
+}
+
+/* Left side cont  This is the LAYOUT*/
+#left-side-cont-dashboard{
+    background: linear-gradient(88deg, #061935, #4d5aae);
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.144);
+    /* border-right: solid 1.5px white; */
+    min-height: 100vh;
+    
+    position: absolute;
+    /* right: 83%; */
+    left: 0;
+    padding: 20px;
+    z-index: 999;
+    /* width: fit-content;
+    height: fit-content; */
+    width: 20%;
+    height: 100%;
+}
+
+.leftSideDashbaord-content{
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    /* text-align: center; */
+}
+
+.leftSideDashbaord-content ul{
+    text-decoration: none;
+    list-style-type: none;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.leftSideDashbaord-content ul li{
+    background-color: #061935;
+    border: solid 1px white;
+    border-radius: 5px;
+    width: 30px;
+    height: fit-content;
+    padding: 8px;
+
+    width: 180px;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+a{
+    text-decoration: none;
+    list-style-type: none;
+    color: white;
+}
+
+.leftSideDashbaord-content ul li:hover{
+    background-color: #4d5aae;
+}
+
+.footUser-dashboard-foot{
+    position: absolute;
+    bottom: 0px !important;
+    padding-bottom: 4px;
+}
+/* Left side cont --closed-- This is the Layout*/
+
+
+/* Right Side Section */
+#right-side-cont-dashboard-main{
+    /* box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.144); */
+    /* min-height: 100vh; */
+    
+    position: absolute;
+    right: 0;
+    padding: 20px;
+
+    width: 80%;
+    height: 100%;
+
+    overflow-y:scroll;
+}
+
+.rightSideDashboard-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.musicReleases-dashboard-editor, .biography-dashboard-editor,
+.mainsection-dashboard-editor{
+    border: solid 2px rgba(135, 135, 135, 0.733);
+    padding: 10px;
+    border-radius: 5px;
+
+    width: 100%;
+    height: fit-content;
+}
+
+.mainsection-dashboard-editor, .musicReleases-dashboard-editor,
+.biography-dashboard-editor{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.musicReleases-dashboard-editor, .biography-dashboard-editor{
+    overflow-x: scroll;
+}
+
+.biography-dashboard-editor{
+    display: grid;
+    grid-template-columns: repeat(1fr, 1fr);
+}
+
+.musicReleases-dashboard-editor h1, .biography-dashboard-editor h1{
+    position: sticky;
+    left: 0;
+}
+.musicReleases-dashboard-editor hr, .biography-dashboard-editor hr{
+    position: sticky;
+    left: 0; 
+}
+/*  */

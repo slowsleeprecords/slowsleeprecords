@@ -1,7 +1,9 @@
 .artists-prop-container{
     padding: 30px;
-    width: 100%;
-}
+    /* width: 100%; */
+
+    display: flex;
+    gap: 50px;}
 
 .artist-data-biography{
     width: 960px;
@@ -77,6 +79,24 @@
     display: flex;
     align-items: center;
     gap:15px;
+}
+
+
+/* Edit button */
+
+.edit-button-dashboard-aboutartist{
+    padding: 10px 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-button-dashboard-aboutartist:hover{
+    background-color: #4d5aae71;
+    color: white;
 }
 
 
