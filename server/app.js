@@ -9,7 +9,8 @@ const PORT = 8080;
 
 app.use(cors({
     origin: 'http://localhost:3000', //the url that is allowed to use this server
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true, 
 }))
 
 
@@ -31,34 +32,39 @@ app.get('/api/create-access-code', async (req, res) => {
 });
 
 // fetching access code 
-app.post('/api/accesscode', async (req, res) => { 
+app.post('/api/accesscode', async (req, res) => {
+    const { accesscode } = req.body;
+    const storedAccessCode = process.env.ACCESSCODE;
 
-    const {accesscode} = req.body;
-
-    // This is the stored env variable of the access code.
-    const storedAccessCode = parseInt(process.env.ACCESSCODE, 10); //By default, all env variables are stored as string.. \\ parseINT was used to turn the string to INT..
-
-
-    try{
-        if (parseInt(accesscode) !== storedAccessCode) {
-            return res.status(401).send({error: "Access code does not match"})
+    try {
+        if (accesscode !== storedAccessCode) {
+            return res.status(401).send({ error: 'Access code does not match' });
         }
-        // 
+
         const user = await prisma.user.findUnique({
-            where: {
-                accesscode: parseInt(accesscode), 
-            },
-        })
-        if(!user) { 
-            return res.status(401).send({error: "Access code does not match"})
-        } else {
-            res.send({message: "Access Granted"})
+            where: { accesscode: accesscode },
+        });
+        await prisma.$disconnect(); // Disconnect after the query
+
+
+        if (!user) {
+            return res.status(401).send({ error: 'Access code does not match' });
         }
-    } catch(error) { 
-        console.error("There is an error", error);
-        res.status(500).send({ error: "Failed to verify access code" });
+
+        // Set a cookie for future authentication
+        res.cookie('accessToken', 'validAccessToken', {
+            httpOnly: true,
+            maxAge: 60 * 60 * 24, // 1 day expiration
+            secure: process.env.NODE_ENV === 'production',
+        });
+
+        res.send({ message: 'Access Granted' });
+    } catch (error) {
+        console.error('Error verifying access code:', error);
+        await prisma.$disconnect(); // Ensure disconnection even on error
+        res.status(500).send({ error: 'Failed to verify access code' });
     }
-})
+});
 // ---closed---
 
 
@@ -236,8 +242,9 @@ app.post("/api/biography-create", async (req, res) => {
         res.status(500).json({ error: "Failed to create biography section" });
   }
 })
-
 // Biograhy Section Closed
+
+
 
 
 app.get('/', (req, res) => { 

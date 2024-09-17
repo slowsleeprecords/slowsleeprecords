@@ -15,36 +15,30 @@ export default function AccessPage() {
     const pathname = usePathname()
     const searchParams = useSearchParams() 
 
-    const handleAccess = async (event) => { 
-        event.preventDefault()
-
-        try{
+    const handleAccess = async (event) => {
+        event.preventDefault();
+    
+        try {
             const accessresponse = await fetch('http://localhost:8080/api/accesscode', {
-
-                method: 'POST', 
-                headers: { 
-                    'Content-Type': 'application/json', 
-                },
-                 body: JSON.stringify({
-                    accesscode: accessCode,  //This sends the user input to the backend to compare it to the access code
-                 })
-            })
-
-            if (accessresponse.ok) { 
-                const responseData = await accessresponse.json()
-                console.log(responseData.message) // This logs the success message
-                router.push("/dashboard")
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ accesscode: accessCode }),
+                credentials: 'include', // This ensures cookies are included in the request
+            });
+    
+            if (accessresponse.ok) {
+                const responseData = await accessresponse.json();
+                console.log(responseData.message); // Logs the success message
+                router.push('/dashboard'); // Redirect to dashboard
             } else {
-                // Handle non-OK status
-                const errorData = await accessresponse.json()
-                setError(errorData.error || "Server Error")
+                const errorData = await accessresponse.json();
+                setError(errorData.error || 'Server Error');
             }
-
-        } catch(error) {
-            console.error("An error occurred:", error)
-            setError("An unexpected error occurred. Please try again.")
-            }
-    }
+        } catch (error) {
+            console.error('An error occurred:', error);
+            setError('An unexpected error occurred. Please try again.');
+        }
+    };
 
     return(<>
         <div id="access-id-cont-main">

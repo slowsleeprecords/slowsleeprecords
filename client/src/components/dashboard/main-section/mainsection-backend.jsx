@@ -5,6 +5,7 @@ import mainsectionBackendcss from "./mainsectioncss-backen.css"
 import Dashboard from "@/app/dashboard/page"
 import DashboardLayout from "../leftDashboardLayout/DashboardLayout"
 import axios from "axios"
+import Loading from "@/app/loading"
 
 export default function MainsectionBackend() { 
 
@@ -43,6 +44,8 @@ const clearForm = () => {
       console.error(error);
     }
   };
+
+  // if (artistname.length === 0 || trackname.length === 0 || description.length === 0 || linktolisten.length === 0 || backgroundimg.length === 0) return <Loading/>;
 
   return (
     <>
