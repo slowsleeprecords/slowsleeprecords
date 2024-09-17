@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node app.js",
     "postinstall": "prisma generate",
-    "build": "prisma generate && node server.js"
+    "build": "prisma generate && node app.js"
   },
   "keywords": [],
   "author": "",
