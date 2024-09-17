@@ -35,6 +35,6 @@ model Biography {
   artistimg         String 
   artistname        String 
   artistbio         String
-  instagramhandles  String?
-  spotifyprofile    String?
+  instagramhandles  String
+  spotifyprofile    String
 }
