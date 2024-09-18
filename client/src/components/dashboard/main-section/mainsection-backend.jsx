@@ -27,7 +27,7 @@ const clearForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/api/mainsection-update", {
+      const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/mainsection-update", {
         artistname,
         trackname,
         description,

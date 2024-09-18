@@ -26,7 +26,7 @@ export default function DiscographySection() {
         event.preventDefault(); 
 
         try {
-            const response = await axios.post("http://localhost:8080/api/discography-create", {
+            const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/discography-create", {
                 trackimg, 
                 tracktitle, 
                 artistname, 

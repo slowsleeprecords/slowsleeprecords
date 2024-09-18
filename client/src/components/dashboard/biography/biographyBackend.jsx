@@ -26,7 +26,7 @@ export default function BiographyBackendSection(){
         event.preventDefault(); 
 
         try {
-            const response = await axios.post("http://localhost:8080/api/biography-create", {
+            const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/biography-create", {
                 artistimg, 
                 artistname, 
                 artistbio, 

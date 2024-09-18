@@ -11,7 +11,7 @@ function SectionOne() {
   const [mainSectionData, setMainSectionData] = useState(null); 
 
   useEffect(() => { 
-    axios.get("http://localhost:8080/api/mainsection")
+    axios.get("https://slowsleeprecords-server.vercel.app/api/mainsection")
       .then((response) => { 
         setMainSectionData(response.data); 
       })

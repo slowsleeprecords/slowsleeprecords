@@ -14,7 +14,7 @@ function Releases({showEditButton}) {
 
 
     useEffect(() => {
-        axios.get("http://localhost:8080/api/discography-data")
+        axios.get("https://slowsleeprecords-server.vercel.app/api/discography-data")
         .then((response) => {
             setReleasesSection(response.data);
         })
