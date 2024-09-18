@@ -14,7 +14,7 @@ app.use(cors({
 }))
 
 
-// Access Code Section 
+// Access Code Section --- Run this api to create the uniqe access code.... 
 app.get('/api/create-access-code', async (req, res) => {
     try {
         const user = await prisma.user.create({
@@ -44,8 +44,7 @@ app.post('/api/accesscode', async (req, res) => {
         const user = await prisma.user.findUnique({
             where: { accesscode: accesscode },
         });
-        await prisma.$disconnect(); // Disconnect after the query
-
+        // await prisma.$disconnect(); // Disconnect after the query
 
         if (!user) {
             return res.status(401).send({ error: 'Access code does not match' });
@@ -61,7 +60,7 @@ app.post('/api/accesscode', async (req, res) => {
         res.send({ message: 'Access Granted' });
     } catch (error) {
         console.error('Error verifying access code:', error);
-        await prisma.$disconnect(); // Ensure disconnection even on error
+        // await prisma.$disconnect(); // Ensure disconnection even on error
         res.status(500).send({ error: 'Failed to verify access code' });
     }
 });
