@@ -10,8 +10,9 @@ const PORT = 8080;
 app.use(cors({
     origin: 'https://slowsleeprecords-client.vercel.app', //the url that is allowed to use this server
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+    exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
+    credentials: true
 }))
 
 
