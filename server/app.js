@@ -5,7 +5,6 @@ import prisma from './prisma.js';
 
 const app = express(); 
 app.use(express.json());
-app.use(cors(corsOptions));
 const PORT = 8080; 
 
 app.use(cors({
