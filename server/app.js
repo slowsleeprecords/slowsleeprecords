@@ -54,7 +54,7 @@ app.post('/api/accesscode', async (req, res) => {
 
         // Set a cookie for future authentication
         res.cookie('accessToken', 'validAccessToken', {
-            httpOnly: true,
+            // httpOnly: true,
             maxAge: 60 * 60 * 24, // 1 day expiration
             secure: process.env.NODE_ENV === 'production',
         });
