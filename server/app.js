@@ -12,7 +12,7 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
-    credentials: true
+    credentials: true, 
 }))
 
 
@@ -25,8 +25,7 @@ app.get('/api/create-access-code', async (req, res) => {
             },
         });
 
-        // res.send({ message: "Access code created" });
-        res.status(200).send({ success: true });
+        res.send({ message: "Access code created" });
 
     } catch (error) {
         console.error("There is an error", error);
