@@ -30,7 +30,13 @@ export default function AccessPage() {
                 const responseData = await accessresponse.json();
                 console.log(responseData.message); // Logs the success message
                 // router.push('/dashboard'); // Redirect to dashboard 
-                router.push('https://slowsleeprecords-client.vercel.app/dashboard');
+                router.push('/dashboard').catch((error) => {
+                    console.error('Error navigating to dashboard:', error);
+                  });
+                //   //  //  //  //  //  //  /
+                  if (!router.push('/dashboard')) {
+                    window.location.href = '/dashboard';
+                  }
             } else {
                 const errorData = await accessresponse.json();
                 setError(errorData.error || 'Server Error');
