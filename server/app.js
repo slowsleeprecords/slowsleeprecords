@@ -25,7 +25,8 @@ app.get('/api/create-access-code', async (req, res) => {
             },
         });
 
-        res.send({ message: "Access code created" });
+        // res.send({ message: "Access code created" });
+        res.status(200).send({ success: true });
 
     } catch (error) {
         console.error("There is an error", error);
