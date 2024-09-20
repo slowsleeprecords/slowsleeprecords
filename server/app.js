@@ -53,13 +53,16 @@ app.post('/api/accesscode', async (req, res) => {
         }
 
         // Set a cookie for future authentication
-        res.cookie('accessToken', 'validAccessToken', {
-            // httpOnly: true,
+         res.cookie('accessToken', 'validAccessToken', {
+            httpOnly: true, // Prevent JavaScript access
+            secure: process.env.NODE_ENV === 'production', // Set secure flag in production
+            sameSite: 'strict', // Strict same-site policy
+            domain: 'slowsleeprecords-client.vercel.app', // Set cookie domain
+            path: '/', // Set cookie path
             maxAge: 60 * 60 * 24, // 1 day expiration
-            secure: process.env.NODE_ENV === 'production',
         });
-
         res.send({ message: 'Access Granted' });
+        
     } catch (error) {
         console.error('Error verifying access code:', error);
         // await prisma.$disconnect(); // Ensure disconnection even on error
