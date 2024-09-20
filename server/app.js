@@ -52,17 +52,17 @@ app.post('/api/accesscode', async (req, res) => {
             return res.status(401).send({ error: 'Access code does not match' });
         }
 
-        // Set a cookie for future authentication
-         res.cookie('accessToken', 'validAccessToken', {
-            httpOnly: true, // Prevent JavaScript access
-            secure: process.env.NODE_ENV === 'production', // Set secure flag in production
-            sameSite: 'strict', // Strict same-site policy
-            domain: 'slowsleeprecords-client.vercel.app', // Set cookie domain
-            path: '/', // Set cookie path
-            maxAge: 60 * 60 * 24, // 1 day expiration
+        // Create an access token
+        const accessToken = Math.random().toString(36).substring(2); // Simple random string to make a random access token
+
+        // Send the access token as a cookie
+        res.cookie('accessToken', accessToken, {
+            httpOnly: true, // Prevent client-side access to the cookie
+            secure: true, // Use HTTPS
+            sameSite: 'strict', // Cookie will only be sent for same-site requests
         });
+
         res.send({ message: 'Access Granted' });
-        
     } catch (error) {
         console.error('Error verifying access code:', error);
         // await prisma.$disconnect(); // Ensure disconnection even on error

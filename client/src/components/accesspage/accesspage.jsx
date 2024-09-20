@@ -23,8 +23,9 @@ export default function AccessPage() {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ accesscode: accessCode }),
-                credentials: 'include', // This ensures cookies are included in the request
+                credentials: 'include', // Ensures cookies are included in the request
             });
+
     
             if (accessresponse.ok) {
                 const responseData = await accessresponse.json();
