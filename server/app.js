@@ -10,7 +10,7 @@ app.use(express.json());
 const PORT = 8080; 
 
 app.use(cors({
-    origin: 'http://localhost:3000', //the url that is allowed to use this server
+    origin: 'https://slowsleeprecords-client.vercel.app', //the url that is allowed to use this server
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
