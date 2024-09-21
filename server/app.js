@@ -72,7 +72,9 @@ app.post('/api/accesscode', async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: 'strict',
-             axAge: 24 * 60 * 60 * 1000 // 1 day
+            axAge: 24 * 60 * 60 * 1000, // 1 day
+            path: '/',
+
         });
         
 

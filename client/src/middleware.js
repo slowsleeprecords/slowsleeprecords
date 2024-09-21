@@ -1,5 +1,3 @@
-import { NextResponse } from 'next/server';
-
 export function middleware(req) {
     const url = req.nextUrl.clone();
     
@@ -12,13 +10,11 @@ export function middleware(req) {
             url.pathname = '/access';
             return NextResponse.redirect(url);
         }
+        
+        // If accessToken exists, allow request to continue
+        return NextResponse.next();
     }
 
-    // Allow request to continue if the accessToken exists
+    // Allow request to continue if not dashboard page
     return NextResponse.next();
 }
-
-// Define the paths where the middleware should run
-export const config = {
-    matcher: ['/dashboard/:path*'],
-};
