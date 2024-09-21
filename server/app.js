@@ -13,6 +13,8 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'], 
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
     credentials: true, 
+    preflightContinue: true,
+    allowCredentials: true,
 }))
 
 
@@ -59,7 +61,8 @@ app.post('/api/accesscode', async (req, res) => {
             secure: true,
             sameSite: 'strict',
         });
-        res.redirect('https://slowsleeprecords-client.vercel.app/dashboard');
+        // res.redirect('https://slowsleeprecords-client.vercel.app/dashboard');
+        res.send({ message: 'Access Granted' });
         
 
         res.send({ message: 'Access Granted' });
