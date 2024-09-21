@@ -53,15 +53,13 @@ app.post('/api/accesscode', async (req, res) => {
         }
 
         // Create an access token
-        if (accessresponse.ok) {
-            res.cookie('hasAccess', 'true', {
-                maxAge: 24 * 60 * 60 * 1000, // 1 day
-                httpOnly: true,
-                secure: true,
-                sameSite: 'strict',
-            });
-            res.redirect('https://slowsleeprecords-client.vercel.app/dashboard');
-        }
+        res.cookie('hasAccess', 'true', {
+            maxAge: 24 * 60 * 60 * 1000, // 1 day
+            httpOnly: true,
+            secure: true,
+            sameSite: 'strict',
+        });
+        res.redirect('https://slowsleeprecords-client.vercel.app/dashboard');
         
 
         res.send({ message: 'Access Granted' });
