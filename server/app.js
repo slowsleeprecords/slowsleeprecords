@@ -2,12 +2,10 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config'
 import prisma from './prisma.js';  
-import cookieParser from 'cookie-parser'; 
 
 const app = express(); 
 app.use(express.json());
 const PORT = 8080; 
-app.use(cookieParser())
 
 app.use(cors({
     origin: 'https://slowsleeprecords-client.vercel.app', //the url that is allowed to use this server
@@ -55,27 +53,15 @@ app.post('/api/accesscode', async (req, res) => {
         }
 
         // Create an access token
-        // a code to generate random 32 hexadecial
-        const generateHexToken = (length = 32) => {
-            let hexToken = '';
-            while (hexToken.length < length) {
-                hexToken += Math.random().toString(16).substring(2);  // Generate random hex digits
-            }
-            return hexToken.substring(0, length);  // Trim the token to the desired length
-        };
-        // 
-
-        const accessToken = generateHexToken();
-
-        // Set the cookie
-        res.cookie('accessToken', accessToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'strict',
-            axAge: 24 * 60 * 60 * 1000, // 1 day
-            path: '/',
-
-        });
+        if (accessresponse.ok) {
+            res.cookie('hasAccess', 'true', {
+                maxAge: 24 * 60 * 60 * 1000, // 1 day
+                httpOnly: true,
+                secure: true,
+                sameSite: 'strict',
+            });
+            res.redirect('https://slowsleeprecords-client.vercel.app/dashboard');
+        }
         
 
         res.send({ message: 'Access Granted' });

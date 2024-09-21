@@ -30,7 +30,9 @@ export default function AccessPage() {
             if (accessresponse.ok) {
                 const responseData = await accessresponse.json();
                 console.log(responseData.message); // Logs the success message
-                router.push('/dashboard'); // Redirect to dashboard 
+                // router.push('/dashboard'); // Redirect to dashboard 
+                localStorage.setItem('hasAccess', 'true');
+                window.location.href = '/dashboard';
             } else {
                 const errorData = await accessresponse.json();
                 setError(errorData.error || 'Server Error');
