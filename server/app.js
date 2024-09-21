@@ -65,7 +65,7 @@ app.post('/api/accesscode', async (req, res) => {
         };
         // 
 
-        const accessToken = generateHexToken;
+        const accessToken = generateHexToken();
 
         // Set the cookie
         res.cookie('accessToken', accessToken, {
