@@ -24,15 +24,16 @@ export default function AccessPage() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ accesscode: accessCode }),
                 credentials: 'include', // Ensures cookies are included in the request
+                mode: 'no-cors', // Fetch with CORS disabled
             });
 
     
             if (accessresponse.ok) {
                 const responseData = await accessresponse.json();
                 console.log(responseData.message); // Logs the success message
-                // router.push('/dashboard'); // Redirect to dashboard 
-                localStorage.setItem('hasAccess', 'true');
-                window.location.href = '/dashboard';
+                router.push('/dashboard'); // Redirect to dashboard 
+                // localStorage.setItem('hasAccess', 'true');
+                // window.location.href = '/dashboard';
             } else {
                 const errorData = await accessresponse.json();
                 setError(errorData.error || 'Server Error');
