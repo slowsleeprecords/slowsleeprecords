@@ -1,24 +1,24 @@
-// middleware.js
 import { NextResponse } from 'next/server';
+import jwt from 'jsonwebtoken';
 
 export function middleware(req) {
-  const { cookies } = req;
-  const accessToken = cookies.get('accessToken');
+  const token = req.cookies.get('accessToken');
 
-  const url = req.nextUrl.clone();
-
-  // If the user doesn't have an access token and is trying to access the dashboard
-  if (!accessToken && url.pathname === '/dashboard') {
-    url.pathname = '/access'; // Redirect to the access code page
-    return NextResponse.redirect(url);
+  if (!token) {
+    return NextResponse.redirect(new URL('/access', req.url));
   }
 
-  // Allow request to continue
-  return NextResponse.next();
+  try {
+    // Verify the JWT
+    jwt.verify(token, process.env.JWT_SECRET);
+    return NextResponse.next(); // Allow the request to proceed
+  } catch (err) {
+    // If verification fails, redirect to access page
+    console.error('JWT verification failed:', err);
+    return NextResponse.redirect(new URL('/access', req.url));
+  }
 }
 
-// Only run middleware on the dashboard route
 export const config = {
-    matcher: '/dashboard/:path*',
-  };
-
+  matcher: ['/dashboard/:path*'], // Protect all routes under /dashboard
+};

@@ -3,6 +3,7 @@ import cors from 'cors';
 import 'dotenv/config'
 import prisma from './prisma.js';  
 import crypto from 'crypto'
+import jwt from 'jsonwebtoken';
 
 const app = express(); 
 app.use(express.json());
@@ -54,18 +55,22 @@ app.post('/api/accesscode', async (req, res) => {
         }
 
         // Create an access token
-        // Generate a random secure token using crypto
-        const token = crypto.randomBytes(32).toString('hex'); // Generates a random 64-character token
-
-        // Set the access token in an HTTP-only, secure cookie
+        // Create JWT
+        const token = jwt.sign(
+            { userId: 1 }, // Payload (you can add more details here, like user ID)
+            process.env.JWT_SECRET, // Your JWT secret key from .env
+            { expiresIn: '1h' } // Expiration time
+        );
+    
+        // Store JWT in a cookie
         res.cookie('accessToken', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
-        sameSite: 'None',
+            httpOnly: true,      // Prevents JavaScript from accessing the cookie
+            secure: process.env.NODE_ENV === 'production', // Only on HTTPS in production
+            sameSite: 'Strict',  // Cookie is sent only with same-site requests
+            maxAge: 3600000,     // 1 hour
         });
-
-        res.send({ message: 'Access Granted', token });
+        
+        res.send({ message: 'Access Granted'});
     } catch (error) {
         console.error('Error verifying access code:', error);
         // await prisma.$disconnect(); // Ensure disconnection even on error
