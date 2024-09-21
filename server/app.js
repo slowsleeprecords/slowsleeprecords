@@ -10,7 +10,7 @@ app.use(express.json());
 const PORT = 8080; 
 
 app.use(cors({
-    origin: 'https://slowsleeprecords-client.vercel.app', //the url that is allowed to use this server
+    origin: 'http://localhost:3000', //the url that is allowed to use this server
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
@@ -66,8 +66,8 @@ app.post('/api/accesscode', async (req, res) => {
         res.cookie('accessToken', token, {
             httpOnly: true,      // Prevents JavaScript from accessing the cookie
             secure: process.env.NODE_ENV === 'production', // Only on HTTPS in production
-            sameSite: 'Strict',  // Cookie is sent only with same-site requests
-            maxAge: 3600000,     // 1 hour
+            sameSite: 'None', 
+            maxAge: 3700000,
         });
         
         res.send({ message: 'Access Granted'});
