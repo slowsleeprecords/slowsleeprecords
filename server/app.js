@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config'
 import prisma from './prisma.js';  
+import crypto from 'crypto'
 
 const app = express(); 
 app.use(express.json());
@@ -12,9 +13,7 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
-    credentials: true, 
-    preflightContinue: true,
-    allowCredentials: true,
+    credentials: true,
 }))
 
 
@@ -55,17 +54,18 @@ app.post('/api/accesscode', async (req, res) => {
         }
 
         // Create an access token
-        res.cookie('hasAccess', 'true', {
-            maxAge: 24 * 60 * 60 * 1000, // 1 day
-            httpOnly: true,
-            secure: true,
-            sameSite: 'strict',
-        });
-        // res.redirect('https://slowsleeprecords-client.vercel.app/dashboard');
-        res.send({ message: 'Access Granted' });
-        
+        // Generate a random secure token using crypto
+        const token = crypto.randomBytes(32).toString('hex'); // Generates a random 64-character token
 
-        res.send({ message: 'Access Granted' });
+        // Set the access token in an HTTP-only, secure cookie
+        res.cookie('accessToken', token, {
+        httpOnly: true,
+        secure: true, // Ensures the cookie is only sent over HTTPS
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+        sameSite: 'Strict', // Prevent CSRF attacks
+        });
+
+        res.send({ message: 'Access Granted', token });
     } catch (error) {
         console.error('Error verifying access code:', error);
         // await prisma.$disconnect(); // Ensure disconnection even on error
