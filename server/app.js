@@ -60,7 +60,7 @@ app.post('/api/accesscode', async (req, res) => {
         // Set the access token in an HTTP-only, secure cookie
         res.cookie('accessToken', token, {
         httpOnly: true,
-        secure: true, // Ensures the cookie is only sent over HTTPS
+        secure: process.env.NODE_ENV === 'production', // Only true in production
         maxAge: 24 * 60 * 60 * 1000, // 1 day
         sameSite: 'Strict', // Prevent CSRF attacks
         });
