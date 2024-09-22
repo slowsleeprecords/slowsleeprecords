@@ -56,12 +56,12 @@ app.post('/api/accesscode', async (req, res) => {
         }
 
         // Create a cookie
-        // Create and set the access cookie
-        res.cookie('accessGranted', 'true', {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'strict',
-            maxAge: 3600000 // 1 hour
+        // Set a cookie for successful access
+        res.cookie('access_granted', true, {
+            httpOnly: true,   // Prevent JavaScript access to the cookie
+            secure: true,     // Send only over HTTPS
+            maxAge: 3600000,  // 1 hour
+            sameSite: 'strict' // Protect from CSRF
         });
 
         res.send({ message: 'Access Granted'});
