@@ -20,7 +20,8 @@ export default function AccessPage() {
     // Redirect to dashboard if access cookie is present
     useEffect(() => {
         if (cookies.accessGranted) {
-            router.push('/dashboard');
+            // router.push('/dashboard');
+            window.location.href = '/dashboard';
         }
     }, [cookies]);
 
@@ -39,7 +40,8 @@ export default function AccessPage() {
             if (accessresponse.ok) {
                 const responseData = await accessresponse.json();
                 console.log(responseData.message); // Logs the success message
-                router.push('/dashboard'); // Redirect to dashboard 
+                // router.push('/dashboard'); // Redirect to dashboard 
+                window.location.href = '/dashboard';
     
             } else {
                 const errorData = await accessresponse.json();
