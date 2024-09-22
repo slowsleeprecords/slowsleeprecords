@@ -5,15 +5,24 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+import { useCookies } from 'react-cookie';
 
 export default function AccessPage() {
 
     const [accessCode, setAccessCode] = useState('')
     const [error, setError] = useState('')
+    const [cookies] = useCookies(['accessGranted']);
 
     const router = useRouter();
     const pathname = usePathname()
     const searchParams = useSearchParams() 
+
+    // Redirect to dashboard if access cookie is present
+    useEffect(() => {
+        if (cookies.accessGranted) {
+            router.push('/dashboard');
+        }
+    }, [cookies]);
 
     const handleAccess = async (event) => {
         event.preventDefault();
