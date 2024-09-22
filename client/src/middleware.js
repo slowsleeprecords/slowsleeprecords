@@ -1,22 +1,25 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
 
-export function middleware(request) {
-  const { cookies } = request;
+// Define protected routes
+const protectedRoutes = ['/dashboard']; // Add any other protected routes here
 
-  // Access the 'access_granted' cookie
-  const accessGranted = cookies.get('access_granted');
+export function middleware(req) {
+    // Extract access-related cookies from the request
+    const accessToken = req.cookies.get('accessToken'); // Adjust this according to your cookie name
 
-  // Check if the user is trying to access any dashboard-related route
-  if (request.nextUrl.pathname.startsWith('/dashboard') && !accessGranted) {
-    // If the cookie doesn't exist, redirect to access page
-    return NextResponse.redirect(new URL('/access', request.url));
-  }
+    const url = req.nextUrl.clone();
 
-  // If the cookie exists, allow the user to continue to the dashboard or nested routes
-  return NextResponse.next();
+    // If the user is trying to access a protected route but has no access token, redirect to the access page
+    if (protectedRoutes.includes(url.pathname) && !accessToken) {
+        url.pathname = '/accesspage'; // redirect to the access page
+        return NextResponse.redirect(url);
+    }
+
+    // Allow the request if accessToken exists
+    return NextResponse.next();
 }
 
-// Apply the middleware to protect /dashboard and all its sub-routes
+// Specify routes where this middleware should run
 export const config = {
-  matcher: ['/dashboard/:path*'],  // Protect /dashboard and all sub-routes (nested folders)
+    matcher: ['/dashboard:path*'], // Add other protected routes here if necessary
 };

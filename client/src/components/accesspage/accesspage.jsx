@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+import Cookies from 'js-cookie'
 
 export default function AccessPage() {
 
@@ -32,8 +33,11 @@ export default function AccessPage() {
             if (accessresponse.ok) {
                 const responseData = await accessresponse.json();
                 console.log(responseData.message); // Logs the success message
-                // router.push('/dashboard'); // Redirect to dashboard 
-                window.location.href = '/dashboard';
+
+                // Set an access cookie to allow dashboard access
+                Cookies.set('accessToken', 'true', { expires: 1 }); // expires in 1 day
+                
+                router.push('/dashboard'); // Redirect to dashboard 
     
             } else {
                 const errorData = await accessresponse.json();
