@@ -3,11 +3,12 @@ import cors from 'cors';
 import 'dotenv/config'
 import prisma from './prisma.js';  
 import crypto from 'crypto'
-import jwt from 'jsonwebtoken';
+import cookieParser from 'cookie-parser';
 
 const app = express(); 
 app.use(express.json());
 const PORT = 8080; 
+app.use(cookieParser())
 
 app.use(cors({
     origin: 'https://slowsleeprecords-client.vercel.app', //the url that is allowed to use this server
@@ -54,23 +55,17 @@ app.post('/api/accesscode', async (req, res) => {
             return res.status(401).send({ error: 'Access code does not match' });
         }
 
-        // Create an access token
-        // Create JWT
-        const token = jwt.sign(
-            { userId: 1 }, // Payload (you can add more details here, like user ID)
-            process.env.JWT_SECRET, // Your JWT secret key from .env
-            { expiresIn: '1h' } // Expiration time
-        );
-    
-        // Store JWT in a cookie
-        res.cookie('accessToken', token, {
-            httpOnly: true,      // Prevents JavaScript from accessing the cookie
-            secure: process.env.NODE_ENV === 'production', // Only on HTTPS in production
-            sameSite: 'None', 
-            maxAge: 3700000,
+        // Create a cookie
+        // Set a cookie for successful access
+        res.cookie('access_granted', true, {
+            httpOnly: true,   // Prevent JavaScript access to the cookie
+            secure: true,     // Send only over HTTPS
+            maxAge: 3600000,  // 1 hour
+            sameSite: 'strict' // Protect from CSRF
         });
-        
+
         res.send({ message: 'Access Granted'});
+        
     } catch (error) {
         console.error('Error verifying access code:', error);
         // await prisma.$disconnect(); // Ensure disconnection even on error
