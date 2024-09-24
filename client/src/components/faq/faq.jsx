@@ -28,7 +28,7 @@ function Faq() {
                     />
 
                     <FaqProps
-                        faqQuestion = "Can I use Slow Sleep Records in my Youtube videos?"
+                        faqQuestion = "Can I use music released through Slow Sleep Records in my Youtube videos & Twitch streams?"
                         faqAnswer = "Yes you can use our music in your Youtube videos, it is best to contact us for more info regarding claims & getting your channel whitlested."
                     />
 
