@@ -11,7 +11,7 @@ const PORT = 8080;
 app.use(cookieParser())
 
 app.use(cors({
-    origin: 'https://www.slowsleeprecords.com/', //the url that is allowed to use this server
+    origin: 'https://www.slowsleeprecords.com', //the url that is allowed to use this server
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
