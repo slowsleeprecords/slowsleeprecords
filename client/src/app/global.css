@@ -1,4 +1,7 @@
-@import url('https://fonts.cdnfonts.com/css/catchy-mager');
+@font-face {
+    font-family: catchyMager;
+    src: url(./Catchy-Mager/CatchyMager-Normal.ttf);
+}
 
 body{
     /* background: linear-gradient(150deg, #061935, #4d5aae); */
@@ -6,7 +9,7 @@ body{
     color: white;
     min-height: 100vh;
 
-    font-family: 'Catchy Mager', sans-serif;
+    font-family: 'catchyMager';
     font-weight: 400;
     font-style: normal;
 
