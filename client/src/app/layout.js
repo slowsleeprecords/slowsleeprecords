@@ -1,4 +1,5 @@
 import globalcss from "./global.css"
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: "Slow Sleep Records",
