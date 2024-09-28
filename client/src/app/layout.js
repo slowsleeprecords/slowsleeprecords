@@ -1,5 +1,7 @@
 import globalcss from "./global.css"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 
 export const metadata = {
   title: "Slow Sleep Records",
@@ -12,6 +14,7 @@ export default function RootLayout({ children }) {
       <body>
       {children}
       <Analytics/>
+      <SpeedInsights/>
       </body>
     </html>
   );
