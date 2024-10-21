@@ -28,6 +28,13 @@ const Submit = () => {
                     <a href="https://discord.gg/XQx648vG39" target="_blank"><button>label submission</button></a>
                 </div>
             </div>
+            <div className="promo-submission">
+                <h1>Lofi Promotion</h1>
+                <div className="the-promoSubmission-content">
+                    <p>Want to promote your lofi music, sample pack, etc., on the mainsection of our website? If yes, please visit our kofi page by clicking the link below to learn more</p>
+                    <a href="https://ko-fi.com/slowsleeprecords" target="_blank"><button>lofi promotion</button></a>
+                </div>
+            </div>
           </div>
         </div>
         </>

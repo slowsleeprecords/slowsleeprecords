@@ -24,10 +24,15 @@
     /* padding: 30px; */
 
     display: flex;
-    gap: 70px;
+    gap: 20px;
+    width: 100%;
+
+    /* display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px; */
 }
 
-.playlist-submission, .label-submission{
+.playlist-submission, .label-submission, .promo-submission{
     text-align: center;
 
     display: flex;
@@ -37,28 +42,28 @@
     background-color: #4d5aae41; 
     padding: 30px;
     border-radius: 10px;
-    /* width: 100%; */
-    width: 500px;
+    width: 100%;
+    /* width: 500px; */
 
 }
 
-.playlist-submission h1, .label-submission h1{
+.playlist-submission h1, .label-submission h1, .the-promoSubmission-content h1{
     font-size: 40px;
 }
 
-.playlist-submission p, .label-submission p{
+.playlist-submission p, .label-submission p, .the-promoSubmission-content p{
     font-weight: bold;
-    font-size: 18px;
+    font-size: 17px;
 }
 
-.the-playlistSubmission-content, .the-labelSubmission-content{
+.the-playlistSubmission-content, .the-labelSubmission-content, .the-promoSubmission-content{
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 11px;
 }
 
-.the-playlistSubmission-content button, .the-labelSubmission-content button{
+.the-playlistSubmission-content button, .the-labelSubmission-content button, .the-promoSubmission-content button{
     width: fit-content;
     align-items: center;
 
@@ -73,7 +78,7 @@
     transition: all 0.3s ease;
 }
 
-.the-playlistSubmission-content button:hover, .the-labelSubmission-content button:hover{
+.the-playlistSubmission-content button:hover, .the-labelSubmission-content button:hover, .the-promoSubmission-content button:hover{
     background-color: #4d5aae85; 
 }
 
@@ -122,7 +127,7 @@
         gap: 20px;
     }
 
-    .playlist-submission, .label-submission {
+    .playlist-submission, .label-submission, .the-promoSubmission-content{
         width: 100%;
     }
 }
