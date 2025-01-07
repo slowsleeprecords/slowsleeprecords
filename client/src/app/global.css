@@ -1,7 +1,12 @@
-@font-face {
-    font-family: catchyMager;
-    src: url(./Catchy-Mager/CatchyMager-Normal.ttf);
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..1000&display=swap');
+
+/* @font-face {
+    font-family: "DM Sans", serif;
+    font-weight: 200;
+    src: url(./DM_Sans/DMSans-VariableFont_opsz\,wght.ttf);
+} */
+
+
 
 body{
     /* background: linear-gradient(150deg, #061935, #4d5aae); */
@@ -9,13 +14,10 @@ body{
     color: white;
     min-height: 100vh;
 
-    font-family: 'catchyMager';
-    font-weight: 400;
-    font-style: normal;
-
     overflow-y: hidden;
     overflow-x: hidden;
-    
+
+    font-family: "DM Sans", serif;
 }
 
 *{
