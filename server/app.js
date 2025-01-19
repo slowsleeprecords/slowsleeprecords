@@ -13,13 +13,13 @@ const PORT = 8080;
 app.use(cookieParser());
 // app.use('/uploads', express.static('uploads'));
 
-const uploadsPath = path.join(path.dirname(new URL(import.meta.url).pathname), 'uploads');
-app.use('/uploads', express.static(uploadsPath));
+// const uploadsPath = path.join(path.dirname(new URL(import.meta.url).pathname), 'uploads');
+// app.use('/uploads', express.static(uploadsPath));
 
 
 // CORS configuration
 app.use(cors({
-    origin: ['https://www.slowsleeprecords.com'], // Allowed origins
+    origin: ['https://www.slowsleeprecords.com', 'http://localhost:3000'], // Allowed origins
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
