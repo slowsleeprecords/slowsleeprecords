@@ -5,13 +5,16 @@ import prisma from './prisma.js';
 import crypto from 'crypto';
 import cookieParser from 'cookie-parser';
 import multer from 'multer';
+import path from 'path';
 
 const app = express(); 
 app.use(express.json());
 const PORT = 8080; 
 app.use(cookieParser());
 // app.use('/uploads', express.static('uploads'));
-app.use('/uploads', express.static('uploads', { root: __dirname })); //to fix the url of the file based images in production 
+const __dirname = path.dirname(new URL(import.meta.url).pathname); //to fix the url of the file based images in production 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // CORS configuration
 app.use(cors({
