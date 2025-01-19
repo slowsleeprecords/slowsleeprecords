@@ -29,7 +29,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="footer-contents-bottom">
-                    <p>©️ {new Date().getFullYear()} <span>Slow Sleep Records</span></p>
+                    <p>© {new Date().getFullYear()} <span>Slow Sleep Records</span></p>
                 </div>
             </div>
         </>

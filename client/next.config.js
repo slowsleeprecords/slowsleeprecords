@@ -5,9 +5,26 @@
 //   }
 
 
-module.exports = {
+// export const images = {
+//   remotePatterns: [
+//     {
+//       protocol: 'https',
+//       hostname: '*',
+//       port: ''
+//     },
+//   ],
+// };
+
+
+const nextConfig = {
   images: {
     remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8080',
+        pathname: '/uploads/**',
+      },
       {
         protocol: 'https',
         hostname: '*',
@@ -15,4 +32,6 @@ module.exports = {
       },
     ],
   },
-}
+};
+
+export default nextConfig;

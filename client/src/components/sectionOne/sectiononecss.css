@@ -17,21 +17,24 @@
     overflow: hidden;
     word-break: break-word;
     overflow-wrap: break-word;
+
+    color: var(--backgroundColorLighter);
+
 }
 
 .img-divAND-content-s1 img{
-    border: solid 1px white;
+    /* border: solid 1px white; */
     width: 100%;
-    height: 500px;
+    height: 620px;
     object-fit: cover;
-    opacity: 0.4;
+    /* opacity: 0.5; */
 }
 
 .textIn-s1-img{
 
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    padding: 6% 50px;
     position: absolute;
     top: 0;
     font-size: 40px;
@@ -43,7 +46,22 @@
 
 .textIn-s1-img p{
     margin-top: 20px;
-    font-size: 21px;
+    font-size: 20px;
+    
+    width: 80%;
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 700;
+}
+
+.textIn-s1-img h4{
+    font-family: "DM Sans", serif !important;
+    font-weight: 800;
+}
+
+.textIn-s1-img h1{
+    font-family: "DM Sans", serif !important;
+    font-weight: 1000;
 }
 
 .textIn-s1-img button{
@@ -58,6 +76,9 @@
     color: white;
     box-shadow: 0px 0px 100px 3px white;
     transition: all 0.4s ease;
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 1000;
 }
 
 .textIn-s1-img button:hover{
@@ -82,15 +103,18 @@
     }
 
     .textIn-s1-img h4{
-        font-size: 30px;
+        font-size: 17.8px;
     }
 
     .textIn-s1-img h1{
-        font-size: 38px;
+        font-size: 27px;
     }
 
     .textIn-s1-img p{
-        font-size: 18px;
+        font-size: 16px;
+        width: 100%;
+        font-weight: 600;
+
     }
 
     .textIn-s1-img button{
@@ -111,15 +135,17 @@
     }
 
     .textIn-s1-img h4{
-        font-size: 35px;
+        font-size: 23.4px;
     }
 
     .textIn-s1-img h1{
-        font-size: 37px;
+        font-size: 32px;
     }
 
     .textIn-s1-img p{
-        font-size: 19px;
+        font-size: 18px;
+        width: 100%;
+        font-weight: 600;
     }
 
     .textIn-s1-img button{
@@ -140,15 +166,17 @@
     }
 
     .textIn-s1-img h4{
-        font-size: 42px;
+        font-size: 27px;
     }
 
     .textIn-s1-img h1{
-        font-size: 46px;
+        font-size: 37px;
     }
 
     .textIn-s1-img p{
-        font-size: 20px;
+        font-size: 19px;
+        width: 100%;
+        font-weight: 600;
     }
 
     .textIn-s1-img button{
@@ -169,15 +197,17 @@
     }
 
     .textIn-s1-img h4{
-        font-size: 44px;
+        font-size: 38px;
     }
 
     .textIn-s1-img h1{
-        font-size: 55px;
+        font-size: 53px;
     }
 
     .textIn-s1-img p{
         font-size: 22px;
+        width: 100%;
+        font-weight: 700;
     }
 
     .textIn-s1-img button{

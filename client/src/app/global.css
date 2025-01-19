@@ -1,29 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 /* @font-face {
-    font-family: "DM Sans", serif;
-    font-weight: 200;
-    src: url(./DM_Sans/DMSans-VariableFont_opsz\,wght.ttf);
+    font-family: "Lilita One";
+    src: url('./LilitaOne-Regular.ttf') format('truetype');
+    font-weight: 100;
 } */
 
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap'); */
 
+
+:root{ 
+    --backgroundColor:rgba(77, 90, 174, 0.2);
+    --backgroundColorLighter: #e8e7e7;
+    --shadowBackgroundColor: #a6a6a6; 
+    --textColor: #262525; 
+}
 
 body{
-    /* background: linear-gradient(150deg, #061935, #4d5aae); */
-    background-color: rgba(0, 0, 0, 0.858);
-    color: white;
+    color: var(--textColor) !important;
+
     min-height: 100vh;
 
     overflow-y: hidden;
     overflow-x: hidden;
 
-    font-family: "DM Sans", serif;
+    font-family: "Lilita One", serif;
+    
 }
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    
+    font-weight: 100;
 }
 
 html {

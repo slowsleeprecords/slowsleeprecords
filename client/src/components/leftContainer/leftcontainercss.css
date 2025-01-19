@@ -6,9 +6,11 @@
     /* padding: 20px; */
     /* border-radius: 10px 0px 0px 10px; */
     /* background-color: #061935; */
-    background: linear-gradient(150deg, #061935, #040f21);
-    animation: gradientAnimation 10s ease infinite; /* Adjust duration as needed */
-    background-size: 100% 800%; 
+    /* background: linear-gradient(150deg, #061935, #040f21);
+    animation: gradientAnimation 10s ease infinite; 
+    background-size: 100% 800%;  */
+
+    background-color: var(--backgroundColor);
 
     overflow-Y: scroll;
     position: relative;
@@ -34,8 +36,8 @@
 
 
 #leftContainer::-webkit-scrollbar {
-    background-color: #061935;
-    width: 12px; 
+    background-color: var(--shadowBackgroundColor);
+    /* width: 14px;  */
   }
   
   
@@ -45,15 +47,17 @@
   
 
   #leftContainer::-webkit-scrollbar-thumb {
-    background: #4d5aae; 
-    border-radius: 5px; 
+    background: var(--textColor); 
+    border-radius: 10px; 
+
+    border: 3px solid var(--shadowBackgroundColor);
   }
   
  
   #leftContainer::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
-  
+
 
   /* Media Query Section */
   @media screen and (min-width: 0px) and (max-width: 800px) {

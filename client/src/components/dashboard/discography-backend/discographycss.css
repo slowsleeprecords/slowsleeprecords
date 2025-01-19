@@ -1,5 +1,6 @@
 #discographyBackend-container{
-    background: linear-gradient(150deg, #061935, #4d5aae);
+    /* background: linear-gradient(150deg, #061935, #4d5aae); */
+    background-color: var(--backgroundColor);
     min-height: 100vh;
 
     position: relative;

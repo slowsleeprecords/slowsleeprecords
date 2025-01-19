@@ -32,7 +32,8 @@ function SectionOne() {
         <div className="s1-cont-content">
           <div className="img-divAND-content-s1">
             <Image
-              src={mainSectionData.backgroundimg} // Using data from API
+              src={`http://localhost:8080${mainSectionData.backgroundimg}`} // Using data from API
+              // src="http://localhost:8080/uploads/1737224277401-10%20Min%20YT%20Mix%20Intro%20-%20Nightly.png"
               width={1000}
               height={1000}
               alt="Section Background"

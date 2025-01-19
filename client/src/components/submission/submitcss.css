@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 #submission-container{
     background-color: rgba(77, 90, 174, 0.2);
-    margin-top: 70px;
+    margin-top: 90px;
 
     display: flex;
     flex-direction: column;
@@ -8,10 +10,16 @@
     justify-content: center;
     padding: 30px;
     gap: 60px;
+    padding-bottom: 7%;
+
+    border-bottom: solid 3px rgba(77, 90, 174, 0.362);
 }
 
 .submission-title h1{
     font-size: 40px;
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 1000;
 }
 
 .line-under-title{
@@ -49,11 +57,17 @@
 
 .playlist-submission h1, .label-submission h1, .the-promoSubmission-content h1{
     font-size: 40px;
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 1000;
 }
 
 .playlist-submission p, .label-submission p, .the-promoSubmission-content p{
-    font-weight: bold;
-    font-size: 17px;
+    /* font-weight: bold; */
+    font-size: 20px;
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 900;
 }
 
 .the-playlistSubmission-content, .the-labelSubmission-content, .the-promoSubmission-content{
@@ -67,15 +81,20 @@
     width: fit-content;
     align-items: center;
 
-    padding: 12px 20px;
+    padding: 16px 16px;
     border: none;
-    font-weight: bold;
+    /* font-weight: 100; */
     border-radius: 10px;
     background-color: #4d5aae;
-    color: white;
+    color: var(--backgroundColorLighter);
     cursor: pointer;
 
     transition: all 0.3s ease;
+    /* font-family: "Lilita One";
+    font-size: 15px; */
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 1000;
 }
 
 .the-playlistSubmission-content button:hover, .the-labelSubmission-content button:hover, .the-promoSubmission-content button:hover{
@@ -94,7 +113,7 @@
     }
 
     .submission-title h1{
-        font-size: 30px;
+        font-size: 24px;
     }
 
     .the-submission-method{
@@ -106,6 +125,20 @@
     .playlist-submission, .label-submission {
         width: 100%;
     }
+
+    .playlist-submission h1, .label-submission h1{
+        font-size: 36px;
+    }   
+
+    .playlist-submission p, .label-submission p{
+        font-size: 20px;
+    }    
+
+    .the-playlistSubmission-content button, .the-labelSubmission-content button, .the-promoSubmission-content button{
+        font-size: 12px;
+        padding: 13px 13px;
+    }
+
 }
 
 
@@ -119,6 +152,7 @@
 
     .submission-title h1{
         text-align: center;
+        font-size: 35px;
     }
 
     .the-submission-method{
@@ -129,6 +163,19 @@
 
     .playlist-submission, .label-submission, .the-promoSubmission-content{
         width: 100%;
+    }
+
+    .playlist-submission h1, .label-submission h1{
+        font-size: 36px;
+    }   
+
+    .playlist-submission p, .label-submission p{
+        font-size: 20px;
+    }    
+
+    .the-playlistSubmission-content button, .the-labelSubmission-content button, .the-promoSubmission-content button{
+        font-size: 12px;
+        padding: 14.5px 13.5px;
     }
 }
 

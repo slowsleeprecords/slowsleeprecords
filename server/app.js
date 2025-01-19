@@ -1,25 +1,39 @@
 import express from 'express';
 import cors from 'cors';
-import 'dotenv/config'
+import 'dotenv/config';
 import prisma from './prisma.js';  
-import crypto from 'crypto'
+import crypto from 'crypto';
 import cookieParser from 'cookie-parser';
+import multer from 'multer';
 
 const app = express(); 
 app.use(express.json());
 const PORT = 8080; 
-app.use(cookieParser())
+app.use(cookieParser());
+app.use('/uploads', express.static('uploads'));
 
+// CORS configuration
 app.use(cors({
-    origin: 'https://www.slowsleeprecords.com', //the url that is allowed to use this server
+    origin: ['http://localhost:3000', 'https://www.slowsleeprecords.com'], // Allowed origins
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
     credentials: true,
-}))
+}));
 
+// Set up multer for file handling (storage and filename)
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');  // Directory for uploaded files
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname);  // Ensure a unique file name
+  }
+});
 
-// Access Code Section --- Run this api to create the uniqe access code.... 
+const upload = multer({ storage: storage });  // Initialize multer with storage settings
+
+// Access Code Section
 app.get('/api/create-access-code', async (req, res) => {
     try {
         const user = await prisma.user.create({
@@ -27,16 +41,14 @@ app.get('/api/create-access-code', async (req, res) => {
                 accesscode: process.env.ACCESSCODE,
             },
         });
-
         res.send({ message: "Access code created" });
-
     } catch (error) {
         console.error("There is an error", error);
         res.status(500).send({ error: "Failed to create access code or access code was already created"});
     }
 });
 
-// fetching access code 
+// Fetching access code
 app.post('/api/accesscode', async (req, res) => {
     const { accesscode } = req.body;
     const storedAccessCode = process.env.ACCESSCODE;
@@ -49,23 +61,17 @@ app.post('/api/accesscode', async (req, res) => {
         const user = await prisma.user.findUnique({
             where: { accesscode: accesscode },
         });
-        // await prisma.$disconnect(); // Disconnect after the query
 
         if (!user) {
             return res.status(401).send({ error: 'Access code does not match' });
         }
-        // Create a cookie
 
-        res.send({ message: 'Access Granted'});
-        
+        res.send({ message: 'Access Granted' });
     } catch (error) {
         console.error('Error verifying access code:', error);
-        // await prisma.$disconnect(); // Ensure disconnection even on error
         res.status(500).send({ error: 'Failed to verify access code' });
     }
 });
-// ---closed---
-
 
 // Main Section API
 app.get("/api/mainsection", async (req, res) => { 
@@ -74,60 +80,44 @@ app.get("/api/mainsection", async (req, res) => {
             where: {
                 id: 1,
             },
-        })
+        });
 
-        if(mainsection == null){ 
-            res.json({data: "id returns null"})
+        if (!mainsection) {
+            res.json({ data: "id returns null" });
+        } else {
+            res.json(mainsection);
         }
-
-        res.json(mainsection)
-    } catch(error) { 
-        if(res.status == 500) {
-            res.json({error: "Backend error || server 500"})
-        } 
+    } catch (error) { 
+        res.status(500).json({ error: "Backend error || server 500" });
     }
-})
+});
 
-// Update Main Section
-app.post("/api/mainsection-update", async (req, res) => { 
-    const {artistname, trackname, description, linktolisten, backgroundimg} = req.body; 
-
-    try{
+// Update Main Section (with file upload)
+app.post('/api/mainsection-update', upload.single('backgroundimg'), async (req, res) => {
+    const { artistname, trackname, description, linktolisten } = req.body;
+    const backgroundimg = req.file ? `/uploads/${req.file.filename}` : ''; // Save the file path
+  
+    try {
         const updateMainSection = await prisma.mainSection.update({
-            where: {
-                id: 1,
-            }, 
-            data: { 
-                artistname: artistname,
-                trackname: trackname, 
-                description: description, 
-                linktolisten: linktolisten, 
-                backgroundimg: backgroundimg,  
-            }, 
-        })
-        res.status(201).json({ message: "Main section updated successfully" });
-
-        if (updateMainSection == undefined || null) {
-            res.json({data: "data could not be found"})
-        }
-    } catch(error) { 
-        if(res.status == 500) { 
-            console.error("Backend Server Error")
-        } 
-
+            where: { id: 1 },
+            data: {
+                artistname,
+                trackname,
+                description,
+                linktolisten,
+                backgroundimg,
+            },
+        });
+        res.status(201).json({ message: 'Main section updated successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to update main section' });
     }
-})
-// 
-// Main Section Closed
+});
 
-// Discography Section 
-
-// Get the discography section data from the backend
+// Discography Section
 app.get("/api/discography-data", async (req, res) => {
-    
-    // const {trackimg, tracktitle, artistname, tracklink} = req.body;
-
-    try { 
+    try {
         const discographySection = await prisma.discograpgy.findMany({
             select: {
                 trackimg: true,
@@ -135,28 +125,20 @@ app.get("/api/discography-data", async (req, res) => {
                 artistname: true,
                 tracklink: true,
             },
-
-             orderBy: {
+            orderBy: {
                 id: 'desc' // Sorting by ID in descending order (latest first)
             }
-        })
-         res.json(discographySection); 
-
-         if(discographySection == null || undefined) { 
-            res.json({message: "Database returns a null or undefined value"})
-         }
-
-    } catch(error) {
-        if(res.status == 500) { 
-            console.error("Backend Server Error")
-        } 
+        });
+        res.json(discographySection);
+    } catch (error) {
+        res.status(500).json({ error: "Backend Server Error" });
     }
-})
-// 
-// Input section --discography--
-app.post("/api/discography-create", async (req, res) => { 
-    
-    const {trackimg, tracktitle, artistname, tracklink} = req.body;
+});
+
+// Input Section -- Discography --
+app.post("/api/discography-create", upload.single('trackimg'), async (req, res) => { 
+    const { tracktitle, artistname, tracklink } = req.body;
+    const trackimg = req.file ? `/uploads/${req.file.filename}` : ''; 
 
     try {
         const createDiscography = await prisma.discograpgy.create({
@@ -166,27 +148,20 @@ app.post("/api/discography-create", async (req, res) => {
                 artistname, 
                 tracklink,
             }, 
-        })
+        });
         res.status(201).json({ message: "Discography section created successfully" });
 
         if (createDiscography == undefined || null) {
             res.status(201).json({ message: "Discography section updated successfully" });
         }
-
     } catch(error) {
         console.error(error); 
         res.status(500).json({ error: "Failed to create discography section" });
-  }
-})
+    }
+});
 
-// Discography section closed
-
-
-// Biography Section 
-
-// Get the biography section data from the backend
+// Biography Section
 app.get("/api/biography-data", async (req, res) => {
-    
     try { 
         const biographySection = await prisma.biography.findMany({
             select: {
@@ -196,29 +171,20 @@ app.get("/api/biography-data", async (req, res) => {
                 instagramhandles: true,
                 spotifyprofile: true,
             },
-
-             orderBy: {
+            orderBy: {
                 id: 'desc' // Sorting by ID in descending order (latest first)
             }
-        })
-         res.json(biographySection); 
-
-         if(biographySection == null || undefined) { 
-            res.json({message: "Database returns a null or undefined value"})
-         }
-
-    } catch(error) {
-        if(res.status == 500) { 
-            console.error("Backend Server Error")
-        } 
+        });
+        res.json(biographySection); 
+    } catch (error) {
+        res.status(500).json({ error: "Backend Server Error" });
     }
-})
-// 
+});
 
-// Input section --biography--
-app.post("/api/biography-create", async (req, res) => { 
-    
-    const {artistimg, artistname, artistbio, instagramhandles, spotifyprofile} = req.body;
+// Input Section -- Biography --
+app.post("/api/biography-create", upload.single('artistimg'), async (req, res) => { 
+    const { artistname, artistbio, instagramhandles, spotifyprofile } = req.body;
+    const artistimg = req.file ? `/uploads/${req.file.filename}` : ''; 
 
     try {
         const createBiography = await prisma.biography.create({
@@ -229,28 +195,22 @@ app.post("/api/biography-create", async (req, res) => {
                 instagramhandles,
                 spotifyprofile,
             }, 
-        })
+        });
         res.status(201).json({ message: "Biography section created successfully" });
 
         if (createBiography == undefined || null) {
             res.status(201).json({ message: "Biography section updated successfully" });
         }
-
-    } catch(error) {
+    } catch (error) {
         console.error(error); 
         res.status(500).json({ error: "Failed to create biography section" });
-  }
-})
-// Biograhy Section Closed
-
-
-
+    }
+});
 
 app.get('/', (req, res) => { 
-    res.json('message: This is Slow Sleep Records Server')
-})
-
+    res.json('message: This is Slow Sleep Records Server');
+});
 
 app.listen(PORT, () => { 
-    console.log(`This server is running on port ${PORT}`)
-})
+    console.log(`This server is running on port ${PORT}`);
+});

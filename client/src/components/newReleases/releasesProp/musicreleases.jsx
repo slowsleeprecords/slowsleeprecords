@@ -14,7 +14,7 @@ function Releases({showEditButton}) {
 
 
     useEffect(() => {
-        axios.get("https://slowsleeprecords-server.vercel.app/api/discography-data")
+        axios.get("http://localhost:8080/api/discography-data")
         .then((response) => {
             setReleasesSection(response.data);
         })
@@ -28,7 +28,8 @@ function Releases({showEditButton}) {
             <div id="newmusicreleases">
                 {releasesSection.map((release, index) => (
                     <div key={index} className="musicRelease-prop">
-                        <Image src={release.trackimg} width={1000} height={1000} alt={release.tracktitle} />
+                        {/* <Image src={`http://localhost:8080${release.trackimg}`} width={1000} height={1000} alt="track images"/> */}
+                        <Image src={`https://slowsleeprecords-server.vercel.app/${release.trackimg}`} width={1000} height={1000} alt="track images"/>
                         <div className="musicRelease-text">
                             <div className="text-title-artist-release">
                                 <h2>{release.tracktitle}</h2>

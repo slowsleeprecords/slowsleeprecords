@@ -40,6 +40,7 @@ function AboutArtists() {
                     <h1>Biography</h1>
                     <p>Get to know more about the talented and amazing producers signed with Slow Sleep Records.</p>
                 </div>
+                <div className="arrows-and-aboutartistdata">
                 <div className="scroll-to-diff-bio">
                     <Image src={leftSide}
                            alt="Scroll Left" 
@@ -53,6 +54,7 @@ function AboutArtists() {
                 </div>
                 <div className="container-to-hold-biography-data" ref={containerRef}>
                     <AboutArtistData/>
+                </div>
                 </div>
             </div>
         </>

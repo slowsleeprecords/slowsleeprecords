@@ -1,8 +1,11 @@
 #newReleases-container-main{
     display: flex;
     flex-direction: column;
-    /* padding: 20px; */
+
+    padding: 50px 50px;
 }
+
+
 
 .newReleases-contents{
     display: flex;
@@ -10,31 +13,65 @@
     /* align-items: center;
     justify-content: center; */
     padding: 30px;
+    margin-top: 50px;
 }
 
 .newReleases-contents h1{
     font-size: 50px;
+    font-weight: 100;
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 1000;
 }
 
 .newReleases-contents p{
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-size: 20px; 
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 800;
 }
 
 .container-TOHold-releases-props{
-    background-color: rgba(77, 90, 174, 0.2); 
-    border-top: solid 1px white;
-    border-bottom: solid 1px white;
+    /* background-color: rgba(77, 90, 174, 0.2);  */
+    /* border-top: solid 5px var(--backgroundColor); */
+    /* border-bottom: solid 2px var(--shadowBackgroundColor); */
+
+    /* box-shadow: 0px 0px 30px 5px var(--backgroundColor); */
+    border-radius: 10px;
+    /* border: solid 2px var(--backgroundColorLighter); */
 
     display: flex !important;
-    align-items: center;
     width: 100%;
     overflow-x: scroll;
+
+    box-shadow:  0px 0px 10px 1px var(--backgroundColor);
+
+    border-left: solid 2px var(--backgroundColorLighter);
+    border-right: solid 2px var(--backgroundColorLighter);
+    border-bottom: solid 2px var(--backgroundColorLighter);
+
+
+    /* animation: pulse-shadow 3s infinite;  */
 }
+
+/* @keyframes pulse-shadow {
+    0% {
+      box-shadow:  0px 0px 4px 0px var(--backgroundColor);;
+    }
+    50% {
+      box-shadow:  0px 0px 1px 2px var(--backgroundColor);
+    }
+    100% {
+      box-shadow:  0px 0px 4px 0px var(--backgroundColor);;
+    }
+} */
 
 .container-TOHold-releases-props::-webkit-scrollbar {
     /* background-color: #061935e1; */
-    background-color: rgba(79, 76, 76, 0.278);
-    height: 13px;
+    background-color: var(--shadowBackgroundColor);
+    border-radius: 20px;
+    /* height: 13px; */
   }
   
 
@@ -42,12 +79,15 @@
   
 
   .container-TOHold-releases-props::-webkit-scrollbar-thumb {
-    background: #4d5aae; 
+    background: var(--textColor); 
+    border-radius: 10px;
+    border: 3px solid var(--shadowBackgroundColor);
+
   }
   
  
   .container-TOHold-releases-props::-webkit-scrollbar-thumb:hover {
-    background: #5969d1; 
+    
     cursor :grabbing;
   }
   
@@ -57,12 +97,12 @@
 
   @media screen and (max-width: 300px) {
     .newReleases-contents{
-        padding: 10px;
+        padding: 10px 1px;
         gap: 8px;
     }
 
     .newReleases-contents h1{
-        font-size: 40px;
+        font-size: 30px;
     }
 
     .newReleases-contents p{
@@ -72,41 +112,77 @@
     #newmusicreleases{
         padding: 20px 10px !important;
     }
+
+    #newReleases-container-main{
+        padding: 10px;
+    }
   }
 
 
   /* Media Query at 301 to 400px */
   @media screen and (min-width: 301px) and (max-width: 400px) {
     .newReleases-contents{
-        padding: 15px;
+        padding: 10px 1px;
         gap: 5px;
     }
 
     .newReleases-contents h1{
-        font-size: 43px;
+        font-size: 38px;
     }
 
     .newReleases-contents p{
-        font-size: 14.5px;
+        font-size: 14px;
     }
 
     #newmusicreleases{
         padding: 20px 15px !important;
+    }
+
+    #newReleases-container-main{
+        padding: 13px;
     }
   }
 
    /* Media Query at 401 to 500px */
    @media screen and (min-width: 401px) and (max-width: 500px) {
     .newReleases-contents{
-        padding: 15px;
+        padding: 10px 1px;
         gap: 5px;
     }
 
-    /* .newReleases-contents h1{
-        font-size: 43px;
+    .newReleases-contents h1{
+        font-size: 39px;
     }
 
     .newReleases-contents p{
-        font-size: 14.5px;
-    } */
+        font-size: 17px;
+    }
+
+    #newReleases-container-main{
+        padding: 14px;
+    }
   }
+
+@media screen and (min-width: 501px) and (max-width: 750px) {
+
+    #newReleases-container-main{
+        padding: 17px;
+    }
+
+    .newReleases-contents{
+        padding: 10px 5px;
+        gap: 5px;
+    }
+
+    .newReleases-contents h1{
+        font-size: 40px;
+    }
+
+    .newReleases-contents p {
+        font-size: 17px;
+    }
+
+    /* .newReleases-contents p{
+        font-size: 15px;
+    } */
+}

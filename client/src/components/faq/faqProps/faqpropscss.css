@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 #faq-box-container{
     padding: 15px 30px;
     width: 100%;
@@ -12,7 +14,11 @@
 
 .faqCntnt-Question h2{
     font-size: 20px;
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 1000;
 }
+
 
 .faq-content{
     background-color: rgb(77, 90, 174, 0.4);
@@ -59,6 +65,9 @@
     height: fit-content;
 
     display: none;
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 800;
 }
 
 
@@ -69,12 +78,28 @@
     #faq-box-container{
         padding: 10px;
     }
+
+    .faq-content h2{
+        font-size: 16px;
+    }
+
+    .faq-content p{
+        font-size: 14px;
+    }
 }
 
 /* Media for screens at 301px to 500px max */
 @media screen and (min-width: 301px) and (max-width: 500px) {
     #faq-box-container{
         padding: 10px;
+    }
+
+    .faq-content h2{
+        font-size: 19px;
+    }
+
+    .faq-content p{
+        font-size: 16px;
     }
 }
 

@@ -8,6 +8,7 @@ import AboutArtists from "../aboutArtists/aboutArtists"
 import Faq from "../faq/faq"
 import Submit from "../submission/submit"
 import Footer from "../footer/footer"
+import PayhipEmbed from "../shop/shop"
 
 function LeftContainer() { 
 
@@ -20,6 +21,7 @@ function LeftContainer() {
                 <NewReleases />
                 <AboutArtists />
                 <Submit /> 
+                <PayhipEmbed/>
                 <Faq />
                 <Footer /> 
             </div>

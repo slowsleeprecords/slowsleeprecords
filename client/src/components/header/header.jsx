@@ -7,6 +7,7 @@ import Link from "next/link"
 import { useState, useEffect } from "react"
 
 import logo from "./assets/slow sleep logo for releases-cropped.svg"
+import logo2 from "./assets/Slow Sleep Records logo - no backgroundtransparent-cropped.svg"
 import burgerOpen from "./assets/burger-advanced-svgrepo-com.svg"
 import burgerClosed from "./assets/close-bold-svgrepo-com.svg"
 
@@ -52,6 +53,14 @@ function Header() {
         setShowHeader(false); // Close menu
     }
 
+    const handleScrollShop = () => {
+        const submitElement = document.getElementById('parent-container-shop');
+        if (submitElement) {
+            submitElement.scrollIntoView({ behavior: 'smooth' });
+        }
+        setShowHeader(false); // Close menu
+    }
+
     // Use States for headers
     const [showHeader, setShowHeader] = useState(false)
     const handleShowHeader = () => {
@@ -61,12 +70,14 @@ function Header() {
     return (
         <>
             <header>
-                <Image src={logo} alt="Logo"></Image>
+                {/* <Image src={logo} alt="Logo"></Image> */}
+                <Image className="header-logo-two" src={logo2} alt="logo2"></Image>
                 <ul>
                     <li onClick={handleScrollHome}><a>Home</a></li>
                     <li onClick={handleScrollDiscography}><a>Discography</a></li>
                     <li onClick={handleScrollBiography}><a>Biography</a></li>
                     <li onClick={handleScrollFaq}><a>Faq</a></li>
+                    <li onClick={handleScrollShop}><a>Shop</a></li>
                     <a onClick={handleScrollSubmit}><button>Submit</button></a>
                 </ul>
             </header>
@@ -80,6 +91,7 @@ function Header() {
                     <li onClick={handleScrollDiscography}><a>Discography</a></li>
                     <li onClick={handleScrollBiography}><a>Biography</a></li>
                     <li onClick={handleScrollFaq}><a>Faq</a></li>
+                    <li onClick={handleScrollShop}><a>Shop</a></li>
                     <a onClick={handleScrollSubmit}><button>Submit</button></a>
                 </ul>
             </div>

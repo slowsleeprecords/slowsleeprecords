@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 .heading-faq-title{
     padding: 30px;
 }
 
 .heading-faq-title h1{
     font-size: 38px;
+
+    font-family: "DM Sans", serif !important;
+    font-weight: 800;
 }
 
 .container-to-hold-faq-props{
@@ -32,7 +37,7 @@
     }
 
     .heading-faq-title h1{
-        font-size: 30px;
+        font-size: 26px;
     }
 
     .container-to-hold-faq-props{
@@ -60,6 +65,10 @@
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         padding: 0px 0px 20px;
+    }
+
+    .heading-faq-title h1{
+        font-size: 29px;
     }
 }
 

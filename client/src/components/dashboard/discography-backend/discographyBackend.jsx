@@ -16,21 +16,26 @@ export default function DiscographySection() {
 
     // This function will clear the the field after successful create 
     const clearForm = () => { 
-        setTrackimg("")
+        setTrackimg(null)
         setTracktitle("")
         setArtistname("")
         setTracklink("")
     }
 
+    const formData = new FormData(); 
+    formData.append("trackimg", trackimg); 
+    formData.append("tracktitle", tracktitle); 
+    formData.append("artistname", artistname); 
+    formData.append("tracklink", tracklink); 
+
     const handleSubmitDiscography = async (event) => { 
         event.preventDefault(); 
 
         try {
-            const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/discography-create", {
-                trackimg, 
-                tracktitle, 
-                artistname, 
-                tracklink,
+            const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/discography-create", formData, {
+                headers: { 
+                    "Content-Type": "multipart/form-data",
+                },
             }); 
             console.log(response.data)
             // to clear the discography field
@@ -53,9 +58,9 @@ export default function DiscographySection() {
                 </div>
                 <form onSubmit={handleSubmitDiscography} className="discographyBackend-form">
                     <div className="discographyBackend-inputs">
-                        <input placeholder="Enter track image link"
-                               value={trackimg}
-                               onChange={(e) => setTrackimg(e.target.value)}
+                        <input 
+                               type="file"
+                               onChange={(e) => setTrackimg(e.target.files[0])}
                                required
                         ></input>
 

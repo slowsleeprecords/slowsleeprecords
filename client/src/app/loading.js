@@ -1,10 +1,17 @@
 "use client"
 
 import Image from "next/image"
-import SlowSleepLoadingIcon from "./Slow Sleep Loading Icon.svg"
+import laodingStyle from "./loadingStyle.css"
+
+import loadingLogo from "@/components/header/assets/Slow Sleep Records logo - no backgroundtransparent-cropped.svg"
+
 
 export default function Loading() { 
     return(<>
-        <Image src={SlowSleepLoadingIcon} alt="loading icon"></Image>
+       <div id="loading-body">
+        <div className="loading-logo">
+            <Image src={loadingLogo}></Image>
+        </div>
+       </div>
     </>)
 }

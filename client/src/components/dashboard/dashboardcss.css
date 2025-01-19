@@ -1,6 +1,9 @@
 #main-dashboard-cont{
     /* background: linear-gradient(20deg, #061935, #4d5aae); */
-    background-color: #061935;
+    /* background-color: #061935; */
+
+    background-color: var(--backgroundColor);
+
     min-height: 100vh;
 
     position: relative !important;
@@ -21,6 +24,7 @@
 /* Left side cont  This is the LAYOUT*/
 #left-side-cont-dashboard{
     background: linear-gradient(88deg, #061935, #4d5aae);
+    /* background-color: var(--textColor); */
     box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.144);
     /* border-right: solid 1.5px white; */
     min-height: 100vh;
