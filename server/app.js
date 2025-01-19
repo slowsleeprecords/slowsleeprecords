@@ -12,8 +12,9 @@ app.use(express.json());
 const PORT = 8080; 
 app.use(cookieParser());
 // app.use('/uploads', express.static('uploads'));
-const __dirname = path.dirname(new URL(import.meta.url).pathname); //to fix the url of the file based images in production 
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+const uploadsPath = path.join(path.dirname(new URL(import.meta.url).pathname), 'uploads');
+app.use('/uploads', express.static(uploadsPath));
 
 
 // CORS configuration
