@@ -1,7 +1,7 @@
 "use client"
 
 import leftcontainercss from "./leftcontainercss.css"
-import Header from "../header/header"
+import HeaderCmpt from "../header/headercmpt"
 import SectionOne from "../sectionOne/sectionOne"
 import NewReleases from "../newReleases/newReleases"
 import AboutArtists from "../aboutArtists/aboutArtists"
@@ -16,7 +16,7 @@ function LeftContainer() {
         <>
             <div id="leftContainer">
             <div className="leftContent-contents">
-                <Header />
+                <HeaderCmpt />
                 <SectionOne />
                 <NewReleases />
                 <AboutArtists />

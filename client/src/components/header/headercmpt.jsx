@@ -11,7 +11,7 @@ import logo2 from "./assets/Slow Sleep Records logo - no backgroundtransparent-c
 import burgerOpen from "./assets/burger-advanced-svgrepo-com.svg"
 import burgerClosed from "./assets/close-bold-svgrepo-com.svg"
 
-function Header() {
+function HeaderCmpt() {
 
     const handleScrollHome = () => {
         const homeElement = document.getElementById('sectionOne-container');
@@ -99,4 +99,4 @@ function Header() {
     )
 }
 
-export default Header
+export default HeaderCmpt

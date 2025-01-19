@@ -20,9 +20,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '8080',
+        protocol: 'https',
+        hostname: 'https://slowsleeprecords-server.vercel.app',
+        port: '',
         pathname: '/uploads/**',
       },
       {

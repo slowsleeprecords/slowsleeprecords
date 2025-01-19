@@ -1,6 +1,6 @@
 "use client"
 
-import Header from "@/components/header/Header"
+import Header from "@/components/header/headercmpt"
 
 import LeftContainer from "@/components/leftContainer/leftContainer"
 import RightContainer from "@/components/rightContainer/rightContainer"
