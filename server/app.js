@@ -19,7 +19,7 @@ app.use('/uploads', express.static(uploadsPath));
 
 // CORS configuration
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://www.slowsleeprecords.com'], // Allowed origins
+    origin: ['https://www.slowsleeprecords.com'], // Allowed origins
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
