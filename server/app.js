@@ -10,7 +10,8 @@ const app = express();
 app.use(express.json());
 const PORT = 8080; 
 app.use(cookieParser());
-app.use('/uploads', express.static('uploads'));
+// app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('uploads', { root: __dirname })); //to fix the url of the file based images in production 
 
 // CORS configuration
 app.use(cors({
