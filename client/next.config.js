@@ -21,7 +21,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'https://slowsleeprecords-server.vercel.app',
+        hostname: 'slowsleeprecords-server.vercel.app',
         port: '',
         pathname: '/uploads/**',
       },
