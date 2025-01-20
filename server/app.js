@@ -17,6 +17,7 @@ const uploadsPath = path.join(path.dirname(new URL(import.meta.url).pathname), '
 app.use('/uploads', express.static(uploadsPath));
 
 
+
 // CORS configuration
 app.use(cors({
     origin: ['https://www.slowsleeprecords.com', 'http://localhost:3000'], // Allowed origins
