@@ -23,7 +23,7 @@ app.use(cookieParser());
 
 // CORS configuration
 app.use(cors({
-    origin: ['https://www.slowsleeprecords.com', 'http://localhost:3000'], // Allowed origins
+    origin: ['https://www.slowsleeprecords.com', 'http://localhost:3000', 'https://slowsleeprecords-server.vercel.app'], // Allowed origins
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
