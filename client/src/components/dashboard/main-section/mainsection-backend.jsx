@@ -64,7 +64,7 @@ export default function MainsectionBackend() {
               {/* Input for selecting the image */}
               <input
                 type="file"
-                required
+                // required
                 onChange={(e) => setBackgroundimg(e.target.files[0])} // Save the file itself
               />
               <input
