@@ -5,7 +5,10 @@ import prisma from './prisma.js';
 import crypto from 'crypto';
 import cookieParser from 'cookie-parser';
 import multer from 'multer';
+import multers3 from 'multer-s3'
+import AWS from "aws-sdk"
 import path from 'path';
+
 
 const app = express(); 
 app.use(express.json());
@@ -13,8 +16,8 @@ const PORT = 8080;
 app.use(cookieParser());
 // app.use('/uploads', express.static('uploads'));
 
-const uploadsPath = path.join(path.dirname(new URL(import.meta.url).pathname), 'uploads');
-app.use('/uploads', express.static(uploadsPath));
+// const uploadsPath = path.join(path.dirname(new URL(import.meta.url).pathname), 'uploads');
+// app.use('/uploads', express.static(uploadsPath));
 
 
 
@@ -27,17 +30,44 @@ app.use(cors({
     credentials: true,
 }));
 
-// Set up multer for file handling (storage and filename)
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');  // Directory for uploaded files
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);  // Ensure a unique file name
-  }
-});
 
-const upload = multer({ storage: storage });  // Initialize multer with storage settings
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'uploads/');  
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, Date.now() + '-' + file.originalname); 
+//   }
+// });
+
+// const upload = multer({ storage: storage });  
+
+
+// This code stores the image in my S3 Bucket on AWS 
+
+// This code is to configure my AWS S3 storge server
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+})
+const s3 = new AWS.S3();
+const myBucket = process.env.AWS_BUCKET_NAME; 
+
+
+// This is the multer s3 config
+const upload = multer({
+    storage: multers3({
+        s3: s3,
+        bucket: myBucket, 
+        acl: "public-read", 
+        contentType: multers3.AUTO_CONTENT_TYPE,
+        key: function (req, file, cb) { 
+            cb(null, Date.now() + '-' + file.originalname); // Unique file name
+        }
+    })
+}); 
+
+// 
 
 // Access Code Section
 app.get('/api/create-access-code', async (req, res) => {
@@ -99,9 +129,13 @@ app.get("/api/mainsection", async (req, res) => {
 });
 
 // Update Main Section (with file upload)
-app.post('/api/mainsection-update', upload.single('backgroundimg'), async (req, res) => {
+app.post('/api/main-section-update', upload.single('backgroundimg'), async (req, res) => {
+
+    console.log('Request received:', req.body); // Log the incoming data
+    console.log('Uploaded file:', req.file); // Log the uploaded file
+
     const { artistname, trackname, description, linktolisten } = req.body;
-    const backgroundimg = req.file ? `/uploads/${req.file.filename}` : ''; // Save the file path
+    const backgroundimg = req.file ? req.file.location : '';
   
     try {
         const updateMainSection = await prisma.mainSection.update({
