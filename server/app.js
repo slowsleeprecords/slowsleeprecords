@@ -117,7 +117,7 @@ app.post('/api/mainsection-update', upload.single('backgroundimg'), async (req, 
         res.status(201).json({ message: 'Main section updated successfully' });
     } catch (error) {
         console.error("Error details:", error); 
-        res.status(500).json({ error: 'Failed to update main section', details: error.message });
+        res.status(500).json({ error: 'Failed to update main section', details: error.message, error });
     }
 });
 
@@ -161,8 +161,9 @@ app.post("/api/discography-create", upload.single('trackimg'), async (req, res) 
             res.status(201).json({ message: "Discography section updated successfully" });
         }
     } catch(error) {
+        console.log('Request File Upload', req.file)
         console.error(error); 
-        res.status(500).json({ error: "Failed to create discography section" });
+        res.status(500).json({ error: "Failed to create discography section", error });
     }
 });
 
@@ -209,7 +210,7 @@ app.post("/api/biography-create", upload.single('artistimg'), async (req, res) =
         }
     } catch (error) {
         console.error(error); 
-        res.status(500).json({ error: "Failed to create biography section" });
+        res.status(500).json({ error: "Failed to create biography section", error });
     }
 });
 
