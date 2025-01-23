@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
-import prisma from './prisma.js';  
+import prisma from "./prisma.js" 
 import crypto from 'crypto';
 import cookieParser from 'cookie-parser';
 import multer from 'multer';
@@ -20,10 +20,10 @@ app.use('/uploads', express.static(uploadsPath));
 
 // CORS configuration
 app.use(cors({
-    origin: ['https://www.slowsleeprecords.com', 'http://localhost:3000'], // Allowed origins
+    origin: ['https://www.slowsleeprecords.com', 'http://localhocdst:3000'], // Allowed origins
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'], 
-    // exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
+    exposedHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Headers'], 
     credentials: true,
 }));
 
@@ -124,7 +124,7 @@ app.post('/api/mainsection-update', upload.single('backgroundimg'), async (req, 
 // Discography Section
 app.get("/api/discography-data", async (req, res) => {
     try {
-        const discographySection = await prisma.discograpgy.findMany({
+        const discographySection = await prisma.discography.findMany({
             select: {
                 trackimg: true,
                 tracktitle: true,
@@ -147,7 +147,7 @@ app.post("/api/discography-create", upload.single('trackimg'), async (req, res) 
     const trackimg = req.file ? `/uploads/${req.file.filename}` : ''; 
 
     try {
-        const createDiscography = await prisma.discograpgy.create({
+        const createDiscography = await prisma.discography.create({
             data: {
                 trackimg,
                 tracktitle,
@@ -156,12 +156,7 @@ app.post("/api/discography-create", upload.single('trackimg'), async (req, res) 
             }, 
         });
         res.status(201).json({ message: "Discography section created successfully" });
-
-        if (createDiscography == undefined || null) {
-            res.status(201).json({ message: "Discography section updated successfully" });
-        }
-    } catch(error) {
-        console.log('Request File Upload', req.file)
+    } catch (error) {
         console.error(error); 
         res.status(500).json({ error: "Failed to create discography section", error });
     }

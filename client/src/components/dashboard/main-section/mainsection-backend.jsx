@@ -27,11 +27,17 @@ export default function MainsectionBackend() {
     
     // Create a FormData object to handle the image upload
     const formData = new FormData();
+
+    
     formData.append("backgroundimg", backgroundimg); // Add the file to FormData
     formData.append("artistname", artistname);
     formData.append("trackname", trackname);
     formData.append("description", description);
     formData.append("linktolisten", linktolisten);
+
+    for (let [key, value] of formData.entries()) { 
+      console.log(`${key}: ${value}`);
+  }
 
     try {
       const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/mainsection-update", formData, {

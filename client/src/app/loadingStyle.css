@@ -1,6 +1,6 @@
 #loading-body{
     /* background: linear-gradient(90deg, var(--backgroundColorLighter), rgb(77, 90, 174)); */
-    background-color: var(--textColor);
+    /* background-color: var(--textColor);
     width: 100%;
     height: 100%;
 
@@ -10,7 +10,7 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
 }
 
 /* .loading-logo{
@@ -18,6 +18,11 @@
     padding: 50px;
     border-radius: 100%;
 } */
+
+.loading-logo h1{
+    font-family: "DM Sans", serif !important;
+    font-weight: 400;
+}
 
 .loading-logo img{
     width: 500px;

@@ -3,38 +3,38 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") 
-  directUrl = env("POSTGRES_URL_NON_POOLING") 
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
-  id         Int     @id @default(autoincrement())
-  accesscode String  @unique
+  id         Int    @id @default(autoincrement())
+  accesscode String @unique
 }
 
 model MainSection {
-  id            Int     @id @default(autoincrement())
+  id            Int    @id @default(autoincrement())
   artistname    String
-  trackname     String 
+  trackname     String
   description   String
-  linktolisten  String 
+  linktolisten  String
   backgroundimg String
 }
 
-model Discograpgy {
-  id            Int     @id @default(autoincrement())
-  trackimg      String 
-  tracktitle    String 
-  artistname    String 
-  tracklink     String
+model Discography {
+  id         Int    @id @default(autoincrement())
+  trackimg   String
+  tracktitle String
+  artistname String
+  tracklink  String
 }
 
-model Biography { 
-  id                Int     @id @default(autoincrement())
-  artistimg         String 
-  artistname        String 
-  artistbio         String
-  instagramhandles  String?
-  spotifyprofile    String?
+model Biography {
+  id               Int     @id @default(autoincrement())
+  artistimg        String
+  artistname       String
+  artistbio        String
+  instagramhandles String?
+  spotifyprofile   String?
 }
