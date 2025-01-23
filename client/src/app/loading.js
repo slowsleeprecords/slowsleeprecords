@@ -10,8 +10,8 @@ export default function Loading() {
     return(<>
        <div id="loading-body">
         <div className="loading-logo">
-            {/* <Image src={loadingLogo}></Image> */}
-            <h1>Data API under development</h1>
+            <Image src={loadingLogo}></Image>
+            {/* <h1>Data API under development</h1> */}
         </div>
        </div>
     </>)
