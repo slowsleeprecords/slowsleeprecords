@@ -54,7 +54,7 @@ function HeaderCmpt() {
     }
 
     const handleScrollShop = () => {
-        const submitElement = document.getElementById('parent-container-shop');
+        const submitElement = document.getElementById('shop-bigger-master');
         if (submitElement) {
             submitElement.scrollIntoView({ behavior: 'smooth' });
         }
