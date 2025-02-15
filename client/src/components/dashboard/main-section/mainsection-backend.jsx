@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -8,53 +10,63 @@ import axios from "axios";
 import Loading from "@/app/loading";
 
 export default function MainsectionBackend() {
-  const [artistname, setArtistname] = useState("");
-  const [trackname, setTrackname] = useState("");
-  const [description, setDescription] = useState("");
-  const [linktolisten, setLinktolisten] = useState("");
-  const [backgroundimg, setBackgroundimg] = useState(null);  // store the file itself
+  const [artistname, setArtistname] = useState("")
+  const [trackname, setTrackname] = useState("")
+  const [description, setDescription] = useState("")
+  const [linktolisten, setLinktolisten] = useState("")
+  const [backgroundimg, setBackgroundimg] = useState(null)
+  const [error, setError] = useState("")
 
   const clearForm = () => {
-    setArtistname("");
-    setTrackname("");
-    setDescription("");
-    setLinktolisten("");
-    setBackgroundimg(null);  // reset the image as well
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    // Create a FormData object to handle the image upload
-    const formData = new FormData();
-
-    
-    formData.append("backgroundimg", backgroundimg); // Add the file to FormData
-    formData.append("artistname", artistname);
-    formData.append("trackname", trackname);
-    formData.append("description", description);
-    formData.append("linktolisten", linktolisten);
-
-    for (let [key, value] of formData.entries()) { 
-      console.log(`${key}: ${value}`);
+    setArtistname("")
+    setTrackname("")
+    setDescription("")
+    setLinktolisten("")
+    setBackgroundimg(null)
+    setError("")
   }
 
-    try {
-      const response = await axios.post("http://localhost:8080/api/mainsection-update", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",  // This tells the server you're sending form data
-        },
-      });
+  const handleFileChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      setBackgroundimg(file)
+      setError("")
+    }
+  }
 
-      console.log(response.data);
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if (!backgroundimg) {
+      setError("Please select a file.")
+      return
+    }
+
+    const formData = new FormData()
+
+    formData.append("backgroundimg", backgroundimg)
+    formData.append("artistname", artistname)
+    formData.append("trackname", trackname)
+    formData.append("description", description)
+    formData.append("linktolisten", linktolisten)
+
+    try {
+      const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/mainsection-update" && "http://localhost:8080/api/mainsection-update", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+
+      console.log(response.data)
 
       if (response.status === 200 || response.status === 201) {
-        clearForm();  // Clear the form after successful submission
+        clearForm()
       }
     } catch (error) {
-      console.error(error);
+      console.error(error)
+      setError("An error occurred while uploading. Please try again.")
     }
-  };
+  }
 
   return (
     <>
@@ -65,14 +77,10 @@ export default function MainsectionBackend() {
             <h1>Main Section Input</h1>
             <hr className="hrline-for-mainsectionBackend-heading" />
           </div>
+          {error && <div className="error-message">{error}</div>}
           <form className="mainsectionBackend-form" onSubmit={handleSubmit}>
             <div className="mainsectionBackend-inputs">
-              {/* Input for selecting the image */}
-              <input
-                type="file"
-                // required
-                onChange={(e) => setBackgroundimg(e.target.files[0])} // Save the file itself
-              />
+              <input type="file" onChange={handleFileChange} required />
               <input
                 placeholder="Enter artist name, product name, etc.."
                 value={artistname}
@@ -94,11 +102,11 @@ export default function MainsectionBackend() {
                 onInput={(e) => {
                   setTimeout(() => {
                     if (e.target.value === "") {
-                      e.target.rows = 2;
+                      e.target.rows = 2
                     } else {
-                      e.target.rows = Math.max(1, e.target.scrollHeight / 20);
+                      e.target.rows = Math.max(1, e.target.scrollHeight / 20)
                     }
-                  }, 10);
+                  }, 10)
                 }}
               />
               <input
@@ -115,5 +123,6 @@ export default function MainsectionBackend() {
         </div>
       </div>
     </>
-  );
+  )
 }
+

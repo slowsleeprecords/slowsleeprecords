@@ -22,7 +22,7 @@ export default function AccessPage() {
         event.preventDefault();
     
         try {
-            const accessresponse = await fetch('https://slowsleeprecords-server.vercel.app/api/accesscode', {
+            const accessresponse = await fetch('https://slowsleeprecords-server.vercel.app/api/accesscode' && 'http://localhost:8080/api/accesscode', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ accesscode: accessCode }),
