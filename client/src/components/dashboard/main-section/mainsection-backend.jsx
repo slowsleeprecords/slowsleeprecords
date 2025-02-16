@@ -51,7 +51,7 @@ export default function MainsectionBackend() {
     formData.append("linktolisten", linktolisten)
 
     try {
-      const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/mainsection-update" && "http://localhost:8080/api/mainsection-update", formData, {
+      const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/mainsection-update", "http://localhost:8080/api/mainsection-update", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

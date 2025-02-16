@@ -44,7 +44,7 @@ export default function DiscographySection() {
     formData.append("tracklink", tracklink)
 
     try {
-      const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/discography-create" && "http://localhost:8080/api/discography-create", formData, {
+      const response = await axios.post("https://slowsleeprecords-server.vercel.app/api/discography-create", "http://localhost:8080/api/discography-create", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -47,7 +47,7 @@ export default function BiographyBackendSection() {
 
     try {
       const response = await axios.post(
-        "https://slowsleeprecords-server.vercel.app/api/biography-create" && "http://localhost:8080/api/biography-create", formData, {
+        "https://slowsleeprecords-server.vercel.app/api/biography-create", "http://localhost:8080/api/biography-create", formData, {
 
           headers: {
             "Content-Type": "multipart/form-data",
