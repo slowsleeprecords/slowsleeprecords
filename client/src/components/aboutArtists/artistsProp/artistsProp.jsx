@@ -15,7 +15,7 @@ function AboutArtistData({editButton}) {
   const [aboutArtistSection, setAboutArtistSection] = useState([]); 
 
   useEffect(() => { 
-    axios.get("https://slowsleeprecords-server.vercel.app/api/biography-data")
+    axios.get("https://slowsleeprecords-server.vercel.app/api/biography-data" && "http://localhost:8080/api/biography-data")
     .then((response) => { 
       setAboutArtistSection(response.data); 
     })
@@ -31,7 +31,7 @@ function AboutArtistData({editButton}) {
            <div className="artists-prop-container">
            {aboutArtistSection.map((artistbiography, index) =>(
             <div key={index} className="artist-data-biography">
-            <Image src={`https://slowsleeprecords-server.vercel.app/${artistbiography.artistimg}`} width={1000} height={1000}></Image>
+            <Image src={artistbiography.artistimg} width={1000} height={1000}></Image>
               <div className="actual-artist-bio-data">
                 <h1>{artistbiography.artistname}</h1>
                 <p>{artistbiography.artistbio}</p>

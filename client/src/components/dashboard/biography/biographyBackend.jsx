@@ -6,11 +6,12 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function BiographyBackendSection() {
-  const [artistimg, setArtistImg] = useState("");
+  const [artistimg, setArtistImg] = useState(null);
   const [artistname, setArtistName] = useState("");
   const [artistbio, setArtistBio] = useState("");
   const [instagramhandles, setInstagramHandles] = useState("");
   const [spotifyprofile, setSpotifyProfile] = useState("");
+  const [error, setError] = useState("")
 
   // This function will clear the form fields after a successful create
   const clearForm = () => {
@@ -21,8 +22,21 @@ export default function BiographyBackendSection() {
     setSpotifyProfile("");
   };
 
+  const handleFileChangeBio = (e) => { 
+    const file = e.target.files[0]
+    if(file) { 
+      setArtistImg(file)
+      setError("")
+    }
+  }
+
   const handleSubmitBiography = async (event) => {
     event.preventDefault();
+
+    if(!artistimg) { 
+      setError("Please Select an image file")
+      return
+    }
 
     const formData = new FormData();
     formData.append("artistimg", artistimg);
@@ -33,7 +47,7 @@ export default function BiographyBackendSection() {
 
     try {
       const response = await axios.post(
-        "https://slowsleeprecords-server.vercel.app/api/biography-create", formData, {
+        "https://slowsleeprecords-server.vercel.app/api/biography-create" && "http://localhost:8080/api/biography-create", formData, {
 
           headers: {
             "Content-Type": "multipart/form-data",
@@ -64,7 +78,7 @@ export default function BiographyBackendSection() {
             <div className="biographyBackend-inputs">
               <input
                 type="file"
-                onChange={(e) => setArtistImg(e.target.files[0])}
+                onChange={handleFileChangeBio}
                 required
               ></input>
 

@@ -95,9 +95,12 @@ app.post("/api/mainsection-update", upload.single("backgroundimg"), async (req, 
     return res.status(400).json({ error: "No file uploaded" })
   }
 
+  const mainsectionFolder = 'MainSectionFolder/'
+  const mainsectionContainedFolder = mainsectionFolder + backgroundimg.originalname
+
   let fileUrl = null
   try {
-    const blob = await put(backgroundimg.originalname, backgroundimg.buffer, {
+    const blob = await put(mainsectionContainedFolder, backgroundimg.buffer, {
       access: "public",
       token: process.env.BLOB_READ_WRITE_TOKEN,
     })
@@ -147,24 +150,44 @@ app.get("/api/discography-data", async (req, res) => {
 
 // Input Section -- Discography --
 app.post("/api/discography-create", upload.single("trackimg"), async (req, res) => {
-  const { tracktitle, artistname, tracklink } = req.body
-  const trackimg = req.file ? `/uploads/${req.file.filename}` : ""
+    const { tracktitle, artistname, tracklink } = req.body
+    const trackimg = req.file
+  
+    if (!trackimg) {
+      return res.status(400).json({ error: "No file uploaded for trackimg" })
+    }
 
-  try {
-    const createDiscography = await prisma.discography.create({
-      data: {
-        trackimg,
-        tracktitle,
-        artistname,
-        tracklink,
-      },
-    })
-    res.status(201).json({ message: "Discography section created successfully" })
-  } catch (error) {
-    console.error(error)
-    res.status(500).json({ error: "Failed to create discography section", error })
-  }
-})
+    const discographyFolderPath = 'DiscographyFolder/'
+    const fileNameANDFolderPathOfBlob = discographyFolderPath + trackimg.originalname
+  
+    let fileUrl = null
+    try {
+      const blob = await put(fileNameANDFolderPathOfBlob, trackimg.buffer, {
+        access: "public",
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+      })
+      fileUrl = blob.url
+    } catch (error) {
+      console.error("Error uploading to Vercel Blob:", error)
+      return res.status(500).json({ error: "Failed to upload file" })
+    }
+  
+    try {
+      const createDiscography = await prisma.discography.create({
+        data: {
+          trackimg: fileUrl,
+          tracktitle,
+          artistname,
+          tracklink,
+        },
+      })
+      res.status(201).json({ message: "Discography section created successfully", data: createDiscography })
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ error: "Failed to create discography section", details: error.message })
+    }
+  })
+  
 
 // Biography Section
 app.get("/api/biography-data", async (req, res) => {
@@ -190,12 +213,31 @@ app.get("/api/biography-data", async (req, res) => {
 // Input Section -- Biography --
 app.post("/api/biography-create", upload.single("artistimg"), async (req, res) => {
   const { artistname, artistbio, instagramhandles, spotifyprofile } = req.body
-  const artistimg = req.file ? `/uploads/${req.file.filename}` : ""
+  const artistimg = req.file
+
+  if(!artistimg) { 
+    return res.status(400).json({error: "No file uploaded"})
+  }
+
+  const folderForBiography = 'BiographyFolder/'
+  const fileANDFolderForBio =  folderForBiography + artistimg.originalname
+
+  let fileUrl = null; 
+  try { 
+    const blob = await put(fileANDFolderForBio, artistimg.buffer, { 
+        access: "public",
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+    })
+    fileUrl = blob.url
+  } catch(error) { 
+    console.error("Error uploading to Vercel Blob:", error)
+    return res.status(500).json({ error: "Failed to upload file" })
+  }
 
   try {
     const createBiography = await prisma.biography.create({
       data: {
-        artistimg,
+        artistimg: fileUrl, 
         artistname,
         artistbio,
         instagramhandles,

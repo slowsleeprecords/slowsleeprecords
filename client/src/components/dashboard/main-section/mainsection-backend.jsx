@@ -59,9 +59,12 @@ export default function MainsectionBackend() {
 
       console.log(response.data)
 
-      if (response.status === 200 || response.status === 201) {
-        clearForm()
-      }
+      // if (response.status === 200 || response.status === 201) {
+      //   clearForm()
+      // }
+      clearForm(); 
+      setBackgroundimg("")
+
     } catch (error) {
       console.error(error)
       setError("An error occurred while uploading. Please try again.")
