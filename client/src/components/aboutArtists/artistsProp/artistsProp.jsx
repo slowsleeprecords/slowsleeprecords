@@ -15,7 +15,7 @@ function AboutArtistData({editButton}) {
   const [aboutArtistSection, setAboutArtistSection] = useState([]); 
 
   useEffect(() => { 
-    axios.get("https://slowsleeprecords-server.vercel.app/api/biography-data", "http://localhost:8080/api/biography-data")
+    axios.get("https://slowsleeprecords-server.vercel.app/api/biography-data")
     .then((response) => { 
       setAboutArtistSection(response.data); 
     })
