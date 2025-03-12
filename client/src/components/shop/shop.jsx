@@ -18,6 +18,13 @@ export default function Shop() {
         <div className="shop-props">
 
           <ShopProps
+                ProductImage="https://payhip.com/cdn-cgi/image/format=auto,width=1500/https://pe56d.s3.amazonaws.com/o_1im5i8o01i6g1e724qr3gh1irr14.jpg"
+                ProductPrice="12.99"
+                ProductLink="https://payhip.com/b/dWfCw"
+                audioSrc="https://v0lwjgoefv9evcig.public.blob.vercel-storage.com/Audio%20Preview%20Files%20For%20The%20Soundpack%20Props%20On%20The%20SSR%20website/Audio%20Preview%201-jXfy5aJwT74STwtuTyr1bXUhvRkaMG.wav"
+              />
+
+          <ShopProps
               ProductImage="https://payhip.com/cdn-cgi/image/format=auto,width=1500/https://pe56d.s3.amazonaws.com/o_1if6agtijne1ivsdja10gelk110.png"
               ProductPrice="4.99"
               ProductLink="https://cultertraz.com/b/cA5Pv"
@@ -29,13 +36,6 @@ export default function Shop() {
             ProductPrice="0.00+"
             ProductLink="https://cultertraz.com/b/v0lbI"
             audioSrc="https://v0lwjgoefv9evcig.public.blob.vercel-storage.com/Audio%20Preview%20Files%20For%20The%20Soundpack%20Props%20On%20The%20SSR%20website/Cozy%20Lofi%20Chords%20-%20Preview-LNBlv42XxruGKwTW6RUPyZLPPaXoSV.wav"
-          />
-
-          <ShopProps
-            ProductImage="https://payhip.com/cdn-cgi/image/format=auto,width=1500/https://pe56d.s3.amazonaws.com/o_1if7035o3b8f8sdpmr14samsm10.png"
-            ProductPrice="0.00+"
-            ProductLink="https://cultertraz.com/b/GHS8J"
-            audioSrc=""
           />
 
         </div>
